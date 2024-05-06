@@ -1,0 +1,14 @@
+HTTrack3.49-2+libhtsjava.so.2 launched on Thu, 02 May 2024 12:15:03 at https://www.geeksforgeeks.org/basic-input-and-output-in-c/
+(httrack https://www.geeksforgeeks.org/basic-input-and-output-in-c/ )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+12:15:08	Error: 	"Not Found" (404) at link https://www.geeksforgeeks.org/basic-input-and-output-in-c/2056/2064/1967/ (from https://www.geeksforgeeks.org/basic-input-and-output-in-c/)
+12:15:08	Error: 	"Not Found" (404) at link https://www.geeksforgeeks.org/basic-input-and-output-in-c/premium-plans-payment/ (from https://www.geeksforgeeks.org/basic-input-and-output-in-c/)
+12:15:08	Error: 	"Not Found" (404) at link https://www.geeksforgeeks.org/basic-input-and-output-in-c/premium-plans/ (from https://www.geeksforgeeks.org/basic-input-and-output-in-c/)
+
+HTTrack Website Copier/3.49-2 mirror complete in 5 seconds : 8 links scanned, 4 files written (1022402 bytes overall), 4 files updated [248805 bytes received at 49761 bytes/sec], 1621922 bytes transferred using HTTP compression in 8 files, ratio 14%, 2.0 requests per connection
+(3 errors, 0 warnings, 0 messages)

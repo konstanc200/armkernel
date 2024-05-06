@@ -1,0 +1,2477 @@
+<!doctype html>
+<html amp lang="en-US">
+
+<!-- Mirrored from www.geeksforgeeks.org/basic-input-and-output-in-c/amp/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2024 09:15:08 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=5">
+  <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1' />
+        <script type='text/javascript' src='https://cdn.ampproject.org/v0/amp-selector-latest.js' async custom-element="amp-selector"></script>
+    <!-- <meta name="amp-ad-enable-refresh" content="doubleclick=30"> -->
+		<title>Basic Input and Output in C - GeeksforGeeks</title>
+		<link rel="canonical" href="../index.html" />
+	<script type='text/javascript' src='https://cdn.ampproject.org/v0.js' async></script>
+<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript><meta name="generator" content="AMP Plugin v0.7.0" />	<style amp-custom>
+		
+
+
+
+amp-ad {
+margin-bottom:10px;
+}
+/*Sticky Head For Design 3*/
+#header{ background: #fff; text-align: center;  box-shadow:0 0 32px rgba(0,0,0,.15); }
+#headerwrap{ position: relative; z-index:1000; width: 100%; top:0; }
+#header h1{ text-align: center; font-size: 16px; position: relative; font-weight: bold; line-height: 50px; padding: 0; margin: 0; text-transform: uppercase }
+.headerlogo{ margin: 0 auto; width: 80%; text-align: center; }
+.headerlogo a{ display:inline-block ;text-decoration: none;}
+
+header.container {
+max-width:840px;
+position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Slide Navigation code */
+amp-sidebar{ width: 250px; background: #131313; font-family: 'Roboto Slab', serif; }
+.amp-sidebar-image{ line-height: 100px; vertical-align:middle; }
+.amp-close-image{ top: 15px; left: 225px; cursor: pointer; }
+.navigation_heading{ padding: 20px 20px 15px 20px; color: #aaa; font-size: 10px; font-family: sans-serif; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #555; display: inline-block; width: 100%}
+.toggle-navigationv2 ul{ list-style-type: none;  padding: 0}
+.toggle-navigationv2 ul li a{ display: inline-block; font-size: 15px; color:#eee; width:94% }
+.amp-menu li{position:relative}
+.toggle-navigationv2 ul li a:hover{background:#666;color:#fff}
+.amp-menu li.menu-item-has-children ul{display:none;margin:0;background:#222}
+.amp-menu li.menu-item-has-children ul ul{background:#444}
+.amp-menu li.menu-item-has-children ul ul ul{background:#666}
+.amp-menu li.menu-item-has-children:hover > ul{display:block}
+.amp-menu li.menu-item-has-children:after{content:'\25be';position:absolute;padding: 10px 15px 10px 30px;right:0;font-size:18px;color:#ccc;top:0;z-index:10000;line-height:1}
+.toggle-navigationv2 { margin-top: 25px; border-top: 1px solid #555; padding: 25px 0px; color: #fff; width: 100%; }
+.menu-all-pages-container:after{ content: ""; clear: both }
+.toggle-text{ color: #fff; font-size: 12px; text-transform: uppercase; letter-spacing: 3px; display: inherit; text-align: center; }
+.toggle-text:before{ content: "..."; font-size: 32px; position: ; font-family: georgia; line-height: 0px; margin-left: 0px; letter-spacing: 1px; top: -3px; position: relative; padding-right: 10px; }
+.toggle-navigation:hover, .toggle-navigation:active, .toggle-navigation:focus{ display: inline-block; width: 100%; }
+
+amp-carousel{direction: ltr;}
+
+
+
+.amp-wp-article{ background-color: #FFF; overflow: visible;
+/*    animation: closing .3s normal forwards ease-in-out,closingFix .6s normal forwards ease-in-out;
+    -webkit-transform-origin: right center;
+    transform-origin: right center;*/
+}
+/* Sidebar */
+/*#sidebar[aria-hidden="false"]+.amp-wp-article { max-height: 100vh; overflow: hidden; animation: opening .3s normal forwards ease-in-out; -webkit-transform: translate3d(60%, 0, 0) scale(0.8); transform: translate3d(60%, 0, 0) scale(0.8); }
+@keyframes opening{ 0% { transform: translate3d(0, 0, 0) scale(1); } 100% { transform: translate3d(60%, 0, 0) scale(0.8); } }
+@keyframes closing{ 0% { transform: translate3d(60%, 0, 0) scale(0.8); } 100% { transform: translate3d(0, 0, 0) scale(1); } }
+@keyframes closingFix{ 0% { max-height: 100vh; overflow: hidden; } 100% { max-height: none; overflow: visible; } }
+*/
+.hamburgermenu{ float:left; position:relative; z-index: 9999; }
+
+.sub-menu {
+    margin-left:30px;
+}
+.sub-menu a {
+padding:10px;
+}
+
+.menu-item-expand {
+    float:right;
+}
+.menu-item {
+    cursor: pointer;
+    background-color: #131313;
+    padding-right: 20px;
+    border: none;
+}
+amp-accordion  h4 {
+    padding:10px 15px 10px 20px;
+    cursor: pointer;
+    background-color: #131313;
+    padding-right: 20px;
+    border: none;
+}
+amp-sidebar h4 {
+margin:0;
+padding:10px 15px 10px 20px;
+}
+amp-accordion section[expanded] .show-more {
+  display: none;
+}
+amp-accordion section:not([expanded]) .show-less {
+  display: none;
+}
+amp-sidebar a {
+text-decoration:none;
+}
+
+/* Category 3 */
+.amp-category-block{ margin: 30px 0px 10px 0px }
+.amp-category-block a{ color:#666}
+.amp-category-block ul{ list-style-type:none}
+.category-widget-gutter h4{ margin-bottom: 0px;}
+.category-widget-gutter ul{ margin-top: 10px; list-style-type:none; padding:0 }
+.amp-category-block-btn{ display: block; text-align: center; font-size: 13px; margin-top: 15px; border-bottom: 1px solid #f1f1f1; text-decoration: none; padding-bottom: 8px;}
+.amp-category-block{ max-width: 840px; margin: 1.5em auto; }
+.amp-category-block ul, .category-widget-wrapper{ max-width: 1000px; margin: 0 auto; padding:0px 15px 5px 15px }
+.amp-category-post{ width: 32%; display: inline-block; word-wrap: break-word;float: left;}
+.amp-category-post amp-img{ margin-bottom:5px; }
+.amp-category-block li:nth-child(3){ margin: 0 1%; }
+.searchmenu{ margin-right: 15px; margin-top: 11px; position: absolute; top: 0; right: 0; }
+.searchmenu button{ background:transparent; border:none }
+.amp-logo amp-img{margin: 0 auto; position:relative;top:9px;max-width:190px;}
+.headerlogo{ margin: 0 auto; width: 80%; text-align: center; }
+
+/*Navigation Menu*/
+.toast { display: block; position: relative; height: 50px; padding-left: 20px; padding-right: 15px; width: 49px; background:none; border:0 }
+.toast:after, .toast:before, .toast span{ position: absolute; display: block; width: 19px; height: 2px; border-radius: 2px; background-color: #000; -webkit-transform: translate3d(0, 0, 0) rotate(0deg); transform: translate3d(0, 0, 0) rotate(0deg); }
+.toast:after, .toast:before{ content: ''; left: 20px; -webkit-transition: all ease-in .4s; transition: all ease-in .4s; }
+.toast span{ opacity: 1; top: 24px; -webkit-transition: all ease-in-out .4s; transition: all ease-in-out .4s; }
+.toast:before{ top: 17px; }
+.toast:after{ top: 31px; }
+#sidebar[aria-hidden="false"]+.amp-wp-article .toast span{ opacity: 0; -webkit-transform: translate3d(200%, 0, 0); transform: translate3d(200%, 0, 0); }
+#sidebar[aria-hidden="false"]+.amp-wp-article .toast:before{ -webkit-transform-origin: left bottom; transform-origin: left bottom; -webkit-transform: rotate(43deg); transform: rotate(43deg); }
+#sidebar[aria-hidden="false"]+.amp-wp-article .toast:after{ -webkit-transform-origin: left top; transform-origin: left top; -webkit-transform: rotate(-43deg); transform: rotate(-43deg); }
+
+
+.relatedpost{ background: none; box-shadow: none; padding:0px 0 0 0; }
+.related-title, .comments_list h3{ font-size: 20px; color: #777; border-bottom: 1px solid #eee; font-weight: 400; padding-bottom: 1px; margin-bottom: 10px; }
+.related-title {display:block}
+.related_posts ol{ list-style-type:none; margin:1em; padding:0 }
+.related_posts ol li{ display:inline-block; width:100%; margin-bottom: 12px; padding: 0px; }
+.related_posts .related_link a{ color: #444; font-size: 16px; font-weight: 600; }
+.related_posts ol li amp-img{ float:left; margin-right:15px }
+.related_posts ol li p{ font-size: 12px; color: #999; line-height: 1.2; margin: 12px 0 0 0; }
+.no_related_thumbnail{ padding: 15px 18px; }
+.no_related_thumbnail .related_link{ margin: 0px 5px 0px 5px; }
+.related-post_image{ float: left; padding-right: 2%; width: 31.6%; overflow: hidden; margin-right: 15px; max-height: 122px; max-width: 110px; }
+.related-post_image amp-img{ width: 144%; left: -20%; }
+
+.related_link a {
+text-decoration : none;
+margin:0;}
+
+/* Responsive */
+@media screen and (min-width: 650px) { table {display: inline-table;}  }
+@media screen and (max-width: 768px){ .amp-wp-meta{ margin:10px 0px 15px 0px } .home-post_image{ width: 40%; } .amp-loop-list .amp-wp-post-content{ width: 58%; } .amp-loop-list .featured_time{line-height:1} .single-post main .amp-wp-content h1{  line-height:1.4;  font-size: 30px;}  }
+@media screen and (max-width: 600px){ .amp-loop-list .amp-wp-tags{display:none} }
+@media screen and (max-width: 530px){ .home-post_image{ width: 35%; } .amp-loop-list .amp-wp-post-content{ width: 63%; } .amp-wp-post-content p { font-size: 12px; } .related_posts ol li p { line-height: 1.6; margin: 7px 0 0 0;} .comments_list ul li .comment-body {width:auto} .amp-category-block li:nth-child(3) {margin:0} }
+@media screen and (max-width: 425px){ .home-post_image{ /*    width: 125px;*/ width: 31.6%; overflow: hidden; /* margin-right: 13px; */ margin-right: 3%; max-height: 122px } .home-post_image amp-img{ width: 144%; left: -20%; } h2.amp-wp-title{    margin-bottom: 7px;  line-height: 1.31578947; font-size: 19px; position:relative;top:-3px } h2.amp-wp-title a{ color:#262626} .amp-loop-list{padding:25px 15px 22px 15px} .amp-loop-list .amp-wp-post-content{ width: 63%; } .amp-loop-list .amp-wp-post-content , .amp-loop-list .amp-wp-post-content { display: block; } .related_posts .related_link a{ font-size: 18px; line-height: 1.7; } .ampforwp-tax-category{ padding-bottom:0 } .amp-wp-byline{ padding:0 } .related_posts .related_link a{ font-size: 17px; line-height: 1.5; } .single-post main .amp-wp-content h1{ line-height: 1.3; font-size: 26px;} .icono-share{display:none} .ampforwp-social-icons amp-social-share{ margin-right: 3px;} main .amp-wp-content{ font-size: 16px; line-height: 26px;} .single-post .amp_author_area .amp_author_area_wrapper{font-size:13px;} .amp-category-post{ font-size:12px; color:#666 } }
+@media screen and (max-width: 400px){ .amp-wp-title{ font-size: 19px; } }
+@media screen and (max-width: 375px){ .single-post main .amp-wp-content h1{ line-height: 1.3; font-size: 24px;} .amp-carousel-slide h1{ font-size: 28px; line-height: 32px; } #pagination .next a, #pagination .prev a{ color: #666; font-size: 14px; padding: 15px 0px; margin-top: -5px; }.related-title,.comments_list h3{ margin-top:15px; } #pagination .next{ margin-bottom:15px; } .related_posts .related_link a{ font-size: 15px; line-height: 1.6; } }
+@media screen and (max-width: 340px){ .single-post main .amp-wp-content h1{ line-height: 1.3; font-size: 22px;} h2.amp-wp-title{ line-height: 1.31578947; font-size: 17px; } .related_posts .related_link a{ font-size: 15px; } .the_content .amp-ad-wrapper{ text-align: center; margin-left: -13px; } }
+@media screen and (max-width: 320px){ .related_posts .related_link a{ font-size: 13px; } .ampforwp-social-icons amp-social-share{ margin-right: 1px; } }
+.entry-content amp-anim{display:table-cell;}
+
+
+#companyTagsDiv {
+display : inline-block;
+}
+
+
+footer amp-img {
+margin-left:30px;
+margin-right:30px;
+margin-top: 20px;
+height: 38px;
+width: 284px;
+}
+
+
+
+/* Generic WP styling */
+
+.alignright {
+	float: right;
+}
+
+.alignleft {
+	float: left;
+}
+
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.amp-wp-enforced-sizes {
+	/** Our sizes fallback is 100vw, and we have a padding on the container; the max-width here prevents the element from overflowing. **/
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.amp-wp-unknown-size img {
+	/** Worst case scenario when we can't figure out dimensions for an image. **/
+	/** Force the image into a box of fixed dimensions and use object-fit to scale. **/
+	object-fit: contain;
+}
+
+/* Template Styles */
+
+.amp-wp-content,
+.amp-wp-title-bar div {
+		margin: 0 auto;
+	max-width: 665px;
+	}
+
+html {
+	background: #4cb96b;
+}
+
+body {
+	background: #fff;
+	color: #353535;
+	font-family: sans-serif;
+	font-weight: 300;
+	line-height: 1.75em;
+}
+
+p,
+ol,
+ul,
+figure {
+	margin: 0 0 1em;
+	padding: 0;
+}
+
+a,
+a:visited {
+	color: #4cb96b;
+}
+
+a:hover,
+a:active,
+a:focus {
+	color: #353535;
+}
+
+/* Quotes */
+
+blockquote {
+	color: #353535;
+	background: rgba(127,127,127,.125);
+	border-left: 2px solid #4cb96b;
+	margin: 8px 0 24px 0;
+	padding: 16px;
+}
+
+blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+/* UI Fonts */
+
+.amp-wp-meta,
+.amp-wp-header div,
+.amp-wp-title,
+.wp-caption-text,
+.amp-wp-tax-category,
+.amp-wp-tax-tag,
+.amp-wp-comments-link,
+.amp-wp-footer p,
+.back-to-top {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+}
+
+/* Header */
+
+.amp-wp-header {
+	background-color: #4cb96b;
+}
+
+.amp-wp-header div {
+	color: #fff;
+	font-size: 1em;
+	font-weight: 400;
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: .875em 16px;
+	position: relative;
+}
+
+.amp-wp-header a {
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Site Icon */
+
+.amp-wp-header .amp-wp-site-icon {
+	/** site icon is 32px **/
+	background-color: #fff;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	position: absolute;
+	right: 18px;
+	top: 10px;
+}
+
+/* Article */
+
+.amp-wp-article {
+	color: #353535;
+	font-weight: 400;
+	max-width: 840px;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+/* Article Header */
+
+.amp-wp-article-header {
+	align-items: center;
+	align-content: stretch;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 1.5em 16px 0;
+}
+
+.amp-wp-title {
+	color: #353535;
+	display: block;
+	flex: 1 0 100%;
+	font-weight: 900;
+	margin: 0 0 .625em;
+	width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Article Meta */
+
+.amp-wp-meta {
+	color: #696969;
+	display: inline-block;
+	flex: 2 1 50%;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0 0 1.5em;
+	padding: 0;
+}
+
+.amp-wp-article-header .amp-wp-meta:last-of-type {
+	text-align: right;
+}
+
+.amp-wp-article-header .amp-wp-meta:first-of-type {
+	text-align: left;
+}
+
+.amp-wp-byline amp-img,
+.amp-wp-byline .amp-wp-author {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.amp-wp-byline amp-img {
+	border: 1px solid #4cb96b;
+	border-radius: 50%;
+	position: relative;
+}
+
+.amp-wp-posted-on {
+	text-align: right;
+}
+
+/* Featured image */
+
+.amp-wp-article-featured-image {
+	margin: 0 0 1em;
+}
+.amp-wp-article-featured-image amp-img {
+	margin: 0 auto;
+}
+.amp-wp-article-featured-image.wp-caption .wp-caption-text {
+	margin: 0 18px;
+}
+
+/* Article Content */
+
+.amp-wp-article-content {
+	margin: 0 16px;
+}
+
+.amp-wp-article-content ul,
+.amp-wp-article-content ol {
+	margin-left: 1em;
+}
+
+.amp-wp-article-content amp-img {
+	margin: 0 auto;
+}
+
+.amp-wp-article-content amp-img.alignright {
+	margin: 0 0 1em 16px;
+}
+
+.amp-wp-article-content amp-img.alignleft {
+	margin: 0 16px 1em 0;
+}
+
+.amp-wp-article-content table,
+.amp-wp-article-content th,
+.amp-wp-article-content td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 8px;
+    text-align: center
+}
+
+.amp-wp-article-content .GFGEditorTheme__table,
+.amp-wp-article-content table {
+  border: 1px solid transparent;
+  overflow: scroll;
+  display: block;
+}
+
+/* Captions */
+
+.wp-caption {
+	padding: 0;
+}
+
+.wp-caption.alignleft {
+	margin-right: 16px;
+}
+
+.wp-caption.alignright {
+	margin-left: 16px;
+}
+
+.wp-caption .wp-caption-text {
+	border-bottom: 1px solid #c2c2c2;
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: .66em 10px .75em;
+}
+
+/* AMP Media */
+
+amp-carousel {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+amp-iframe,
+amp-youtube,
+amp-instagram,
+amp-vine {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+
+.amp-wp-article-content amp-carousel amp-img {
+	border: none;
+}
+
+amp-carousel > amp-img > img {
+	object-fit: contain;
+}
+
+.amp-wp-iframe-placeholder {
+	background: #c2c2c2 url( https://www.cdn.geeksforgeeks.org/wp-content/plugins/amp/assets/images/placeholder-icon.png) no-repeat center 40%;
+	background-size: 48px 48px;
+	min-height: 48px;
+}
+
+/* Article Footer Meta */
+
+.amp-wp-article-footer .amp-wp-meta {
+	display: block;
+}
+
+.amp-wp-tax-category,
+.amp-wp-tax-tag {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 1.5em 0px;
+}
+
+.amp-wp-comments-link {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	text-align: center;
+	margin: 2.25em 0 1.5em;
+}
+
+.amp-wp-comments-link a {
+	border-style: solid;
+	border-color: #c2c2c2;
+	border-width: 1px 1px 2px;
+	border-radius: 4px;
+	background-color: transparent;
+	color: #4cb96b;
+	cursor: pointer;
+	display: block;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 18px;
+	margin: 0 auto;
+	max-width: 200px;
+	padding: 11px 16px;
+	text-decoration: none;
+	width: 50%;
+	-webkit-transition: background-color 0.2s ease;
+			transition: background-color 0.2s ease;
+}
+
+/* AMP Footer */
+
+.amp-wp-footer {
+	border-top: 1px solid #c2c2c2;
+	margin: calc(1.5em - 1px) 0 0;
+}
+
+.amp-wp-footer div {
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: 1.25em 16px 1.25em;
+	position: relative;
+}
+
+.amp-wp-footer h2 {
+	font-size: 1em;
+	line-height: 1.375em;
+	margin: 0 0 .5em;
+}
+
+.amp-wp-footer p {
+	color: #696969;
+	font-size: .8em;
+	line-height: 1.5em;
+	margin: 0 85px 0 0;
+}
+
+.amp-wp-footer a {
+	text-decoration: none;
+}
+
+.back-to-top {
+	bottom: 1.275em;
+	font-size: .8em;
+	font-weight: 600;
+	line-height: 2em;
+	position: absolute;
+	right: 16px;
+}
+
+
+ .ampTabContainer {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .tabButton[selected] {
+        outline: none;
+            background: #fff;
+    color: #EC4E20;
+    padding-bottom: 11px;
+    margin-top: 0;
+    position: relative;
+    top: 1px;
+border: 1px solid;
+    border-bottom: none;
+    -webkit-border-top-left-radius: 3px;
+    -webkit-border-top-right-radius: 3px;
+    -moz-border-radius-topleft: 3px;
+    -moz-border-radius-topright: 3px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    line-height: 19px;
+    text-transform: inherit;
+    margin: 1px 0px 0 0;
+    padding: 10px 0px 10px;
+    white-space: nowrap;
+    float: left;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-color: #dddddd;
+    }
+
+    .tabButton {
+        list-style: none;
+        flex-grow: 1;
+        text-align: center;
+        cursor: pointer;
+background: transparent;
+    border: 1px solid transparent;
+    border-bottom: none;
+    -webkit-border-top-left-radius: 3px;
+    -webkit-border-top-right-radius: 3px;
+    -moz-border-radius-topleft: 3px;
+    -moz-border-radius-topright: 3px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    color: #060;
+    line-height: 19px;
+    text-transform: inherit;
+    margin: 1px 6px 0 0;
+    padding: 10px 0px 10px;
+    white-space: nowrap;
+    float: left;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    }
+
+    .tabContent {
+        display: none;
+        width: 94%;
+        order: 1; /* must be greater than the order of the tab buttons to flex to the next line */
+background: #fff;
+    border: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -webkit-border-top-left-radius: 0;
+    -moz-border-radius-topleft: 0;
+    border-top-left-radius: 0;
+    clear: left;
+    margin-bottom: 0;
+    padding: 10px 10px 0;
+    word-wrap: break-word;
+    }
+
+    .tabButton[selected]+.tabContent {
+        display: block;
+    }
+
+    /* For example below (not required) */
+    .itemCustom {
+        border: 1px solid #000;
+        height: 280px;
+        width: 380px;
+        margin: 10px;
+        text-align: center;
+        padding-top: 140px;
+    }
+
+
+pre{
+  display: block;
+  overflow-x: scroll;
+  padding: 0.5em;
+  background:#f8f8f8;
+}
+
+.tabContent > pre{
+margin:0em;
+background : white;
+}
+.syntaxhighlighter{
+  display: block;
+  overflow-x: scroll;
+  padding: 0.5em;
+  background:#f8f8f8;
+}
+
+.tabContent > .syntaxhighlighter{
+    margin:0em;
+    background : white;
+}
+.syntaxhighlighter .line {
+    line-height: 0.5;
+}
+
+pre.notranslate{
+background : white;
+
+}
+
+
+
+
+
+/* author info box */
+.author_info_box {
+  padding: 0 30px;
+  display: inline-flex;
+  align-items: center;
+}
+.author_details {
+  padding-left: 15px;
+  overflow: hidden;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+}
+.avatar_image {
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+}
+
+.author_bio {
+    color: rgba(0,0,0,.74);
+}
+
+.author_details a {
+    color: rgba(0,0,0,.85) ;
+    text-decoration: underline;
+}
+
+hr {
+    background-color: #ddd;
+}
+
+.ql-img-inline-formula {
+    display: inline-block;
+}
+amp-img:not(.ql-img-inline-formula) {
+    margin-bottom:10px;
+}
+amp-selector [option][selected] {
+    outline: none;
+}
+.author_info_box amp-img {
+max-width:60px;
+}
+
+
+/* shCore Start */
+
+.syntaxhighlighter a,
+.syntaxhighlighter div,
+.syntaxhighlighter code,
+.syntaxhighlighter table,
+.syntaxhighlighter table td,
+.syntaxhighlighter table tr,
+.syntaxhighlighter table tbody,
+.syntaxhighlighter table thead,
+.syntaxhighlighter table caption,
+.syntaxhighlighter textarea {
+  -moz-border-radius: 0 0 0 0 ;
+  -webkit-border-radius: 0 0 0 0 ;
+  background: none ;
+  border: 0 ;
+  bottom: auto ;
+  float: none ;
+  height: auto ;
+  left: auto ;
+  line-height: 1.1em ;
+  margin: 0 ;
+  outline: 0 ;
+  overflow: visible ;
+  padding: 0 ;
+  position: static ;
+  right: auto ;
+  text-align: left ;
+  top: auto ;
+  vertical-align: baseline ;
+  width: auto ;
+  box-sizing: content-box ;
+  font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace ;
+  font-weight: normal ;
+  font-style: normal ;
+  font-size: 1em ;
+  min-height: inherit ;
+  min-height: auto ;
+}
+
+.syntaxhighlighter {
+  margin: 1em 0 1em 0 ;
+  position: relative ;
+  font-size: 1em ;
+}
+.syntaxhighlighter.source {
+  overflow: hidden ;
+}
+.syntaxhighlighter .bold {
+  font-weight: bold ;
+}
+.syntaxhighlighter .italic {
+  font-style: italic ;
+}
+.syntaxhighlighter .line {
+  white-space: pre ;
+}
+.syntaxhighlighter table {
+  width: 100% ;
+}
+.syntaxhighlighter table caption {
+  text-align: left ;
+  padding: .5em 0 0.5em 1em ;
+}
+.syntaxhighlighter table td.code {
+  width: 100% ;
+}
+.syntaxhighlighter table td.code .container {
+  position: relative ;
+}
+.syntaxhighlighter table td.code .container textarea {
+  box-sizing: border-box ;
+  position: absolute ;
+  left: 0 ;
+  top: 0 ;
+  width: 100% ;
+  height: 100% ;
+  border: none ;
+  background: white ;
+  padding-left: 1em ;
+  overflow: hidden ;
+  white-space: pre ;
+}
+.syntaxhighlighter table td.gutter .line {
+  text-align: right ;
+  padding: 0 0.5em 0 1em ;
+}
+.syntaxhighlighter table td.code .line {
+  padding: 0 1em ;
+}
+.syntaxhighlighter.nogutter td.code .container textarea, .syntaxhighlighter.nogutter td.code .line {
+  padding-left: 0em ;
+}
+.syntaxhighlighter.show {
+  display: block ;
+}
+.syntaxhighlighter.collapsed table {
+  display: none ;
+}
+.syntaxhighlighter.collapsed .toolbar {
+  padding: 0.1em 0.8em 0em 0.8em ;
+  font-size: 1em ;
+  position: static ;
+  width: auto ;
+  height: auto ;
+}
+.syntaxhighlighter.collapsed .toolbar span {
+  display: inline ;
+  margin-right: 1em ;
+}
+.syntaxhighlighter.collapsed .toolbar span a {
+  padding: 0 ;
+  display: none ;
+}
+.syntaxhighlighter.collapsed .toolbar span a.expandSource {
+  display: inline ;
+}
+.syntaxhighlighter .toolbar {
+  position: absolute ;
+  right: 1px ;
+  top: 1px ;
+  width: 11px ;
+  height: 11px ;
+  font-size: 10px ;
+  z-index: 10 ;
+}
+.syntaxhighlighter .toolbar span.title {
+  display: inline ;
+}
+.syntaxhighlighter .toolbar a {
+  display: block ;
+  text-align: center ;
+  text-decoration: none ;
+  padding-top: 1px ;
+}
+.syntaxhighlighter .toolbar a.expandSource {
+  display: none ;
+}
+.syntaxhighlighter.ie {
+  font-size: .9em ;
+  padding: 1px 0 1px 0 ;
+}
+.syntaxhighlighter.ie .toolbar {
+  line-height: 8px ;
+}
+.syntaxhighlighter.ie .toolbar a {
+  padding-top: 0px ;
+}
+.syntaxhighlighter.printing .line.alt1 .content,
+.syntaxhighlighter.printing .line.alt2 .content,
+.syntaxhighlighter.printing .line.highlighted .number,
+.syntaxhighlighter.printing .line.highlighted.alt1 .content,
+.syntaxhighlighter.printing .line.highlighted.alt2 .content {
+  background: none ;
+}
+.syntaxhighlighter.printing .line .number {
+  color: #bbbbbb ;
+}
+.syntaxhighlighter.printing .line .content {
+  color: black ;
+}
+.syntaxhighlighter.printing .toolbar {
+  display: none ;
+}
+.syntaxhighlighter.printing a {
+  text-decoration: none ;
+}
+.syntaxhighlighter.printing .plain, .syntaxhighlighter.printing .plain a {
+  color: black ;
+}
+.syntaxhighlighter.printing .comments, .syntaxhighlighter.printing .comments a {
+  color: #008200 ;
+}
+.syntaxhighlighter.printing .string, .syntaxhighlighter.printing .string a {
+  color: blue ;
+}
+.syntaxhighlighter.printing .keyword {
+  color: #006699 ;
+  font-weight: bold ;
+}
+.syntaxhighlighter.printing .preprocessor {
+  color: gray ;
+}
+.syntaxhighlighter.printing .variable {
+  color: #aa7700 ;
+}
+.syntaxhighlighter.printing .value {
+  color: #009900 ;
+}
+.syntaxhighlighter.printing .functions {
+  color: #ff1493 ;
+}
+.syntaxhighlighter.printing .constants {
+  color: #0066cc ;
+}
+.syntaxhighlighter.printing .script {
+  font-weight: bold ;
+}
+.syntaxhighlighter.printing .color1, .syntaxhighlighter.printing .color1 a {
+  color: gray ;
+}
+.syntaxhighlighter.printing .color2, .syntaxhighlighter.printing .color2 a {
+  color: #ff1493 ;
+}
+.syntaxhighlighter.printing .color3, .syntaxhighlighter.printing .color3 a {
+  color: red ;
+}
+.syntaxhighlighter.printing .break, .syntaxhighlighter.printing .break a {
+  color: black ;
+}
+
+.syntaxhighlighter {
+  background-color: white ;
+}
+.syntaxhighlighter .line.alt1 {
+  background-color: white ;
+}
+.syntaxhighlighter .line.alt2 {
+  background-color: white ;
+}
+.syntaxhighlighter .line.highlighted.alt1, .syntaxhighlighter .line.highlighted.alt2 {
+  background-color: #e0e0e0 ;
+}
+.syntaxhighlighter .line.highlighted.number {
+  color: black ;
+}
+.syntaxhighlighter table caption {
+  color: black ;
+}
+.syntaxhighlighter .gutter {
+  color: #afafaf ;
+}
+.syntaxhighlighter .gutter .line {
+  border-right: 3px solid #6ce26c ;
+}
+.syntaxhighlighter .gutter .line.highlighted {
+  background-color: #6ce26c ;
+  color: white ;
+}
+.syntaxhighlighter.printing .line .content {
+  border: none ;
+}
+.syntaxhighlighter.collapsed {
+  overflow: visible ;
+}
+.syntaxhighlighter.collapsed .toolbar {
+  color: blue ;
+  background: white ;
+  border: 1px solid #6ce26c ;
+}
+.syntaxhighlighter.collapsed .toolbar a {
+  color: blue ;
+}
+.syntaxhighlighter.collapsed .toolbar a:hover {
+  color: red ;
+}
+.syntaxhighlighter .toolbar {
+  color: white ;
+  background: #6ce26c ;
+  border: none ;
+}
+.syntaxhighlighter .toolbar a {
+  color: white ;
+}
+.syntaxhighlighter .toolbar a:hover {
+  color: black ;
+}
+.syntaxhighlighter .plain, .syntaxhighlighter .plain a {
+  color: black ;
+}
+.syntaxhighlighter .comments, .syntaxhighlighter .comments a {
+  color: #008200 ;
+}
+.syntaxhighlighter .string, .syntaxhighlighter .string a {
+  color: blue ;
+}
+.syntaxhighlighter .keyword {
+  color: #006699 ;
+}
+.syntaxhighlighter .preprocessor {
+  color: gray ;
+}
+.syntaxhighlighter .variable {
+  color: #aa7700 ;
+}
+.syntaxhighlighter .value {
+  color: #009900 ;
+}
+.syntaxhighlighter .functions {
+  color: #ff1493 ;
+}
+.syntaxhighlighter .constants {
+  color: #0066cc ;
+}
+.syntaxhighlighter .script {
+  font-weight: bold ;
+  color: #006699 ;
+  background-color: none ;
+}
+.syntaxhighlighter .color1, .syntaxhighlighter .color1 a {
+  color: gray ;
+}
+.syntaxhighlighter .color2, .syntaxhighlighter .color2 a {
+  color: #ff1493 ;
+}
+.syntaxhighlighter .color3, .syntaxhighlighter .color3 a {
+  color: red ;
+}
+
+.syntaxhighlighter .keyword {
+  font-weight: bold ;
+}
+
+/* shCoreTheme Start */
+.syntaxhighlighter {
+  background-color: white ;
+}
+.syntaxhighlighter .line.alt1 {
+  background-color: white ;
+}
+.syntaxhighlighter .line.alt2 {
+  background-color: white ;
+}
+.syntaxhighlighter .line.highlighted.alt1, .syntaxhighlighter .line.highlighted.alt2 {
+  background-color: #e0e0e0 ;
+}
+.syntaxhighlighter .line.highlighted.number {
+  color: black ;
+}
+.syntaxhighlighter table caption {
+  color: black ;
+}
+.syntaxhighlighter .gutter {
+  color: #afafaf ;
+}
+.syntaxhighlighter .gutter .line {
+  border-right: 3px solid #6ce26c ;
+}
+.syntaxhighlighter .gutter .line.highlighted {
+  background-color: #6ce26c ;
+  color: white ;
+}
+.syntaxhighlighter.printing .line .content {
+  border: none ;
+}
+.syntaxhighlighter.collapsed {
+  overflow: visible ;
+}
+.syntaxhighlighter.collapsed .toolbar {
+  color: blue ;
+  background: white ;
+  border: 1px solid #6ce26c ;
+}
+.syntaxhighlighter.collapsed .toolbar a {
+  color: blue ;
+}
+.syntaxhighlighter.collapsed .toolbar a:hover {
+  color: red ;
+}
+.syntaxhighlighter .toolbar {
+  color: white ;
+  background: #6ce26c ;
+  border: none ;
+}
+.syntaxhighlighter .toolbar a {
+  color: white ;
+}
+.syntaxhighlighter .toolbar a:hover {
+  color: black ;
+}
+.syntaxhighlighter .plain, .syntaxhighlighter .plain a {
+  color: black ;
+}
+.syntaxhighlighter .comments, .syntaxhighlighter .comments a {
+  color: #008200 ;
+}
+.syntaxhighlighter .string, .syntaxhighlighter .string a {
+  color: blue ;
+}
+.syntaxhighlighter .keyword {
+  color: #006699 ;
+}
+.syntaxhighlighter .preprocessor {
+  color: gray ;
+}
+.syntaxhighlighter .variable {
+  color: #aa7700 ;
+}
+.syntaxhighlighter .value {
+  color: #009900 ;
+}
+.syntaxhighlighter .functions {
+  color: #ff1493 ;
+}
+.syntaxhighlighter .constants {
+  color: #0066cc ;
+}
+.syntaxhighlighter .script {
+  font-weight: bold ;
+  color: #006699 ;
+  background-color: none ;
+}
+.syntaxhighlighter .color1, .syntaxhighlighter .color1 a {
+  color: gray ;
+}
+.syntaxhighlighter .color2, .syntaxhighlighter .color2 a {
+  color: #ff1493 ;
+}
+.syntaxhighlighter .color3, .syntaxhighlighter .color3 a {
+  color: red ;
+}
+
+.syntaxhighlighter .keyword {
+  font-weight: bold ;
+}
+
+/* Footer CSS */
+footer {
+  text-align: justify;
+  display:block;
+  link-height:1.75;
+}
+.gfg-icon::after {
+  content: "";
+  background-image: url(https://media.geeksforgeeks.org/auth-dashboard-uploads/is3_20210803.svg.svg);
+  background-repeat: no-repeat;
+  width: 24px;
+  vertical-align: middle;
+  background-color: transparent;
+  overflow: hidden;
+  display: inline-block;
+  height: 24px;
+  transition: opacity 0.3s, rotate 200ms;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  transform-origin: center;
+}
+
+.gfg-icon_mail::after {
+  background-position: 0px -81px;
+}
+.gfg-icon_pin::after {
+  background-position: 0px -441px;
+}
+
+.gfg-footer .footer-wrapper {
+  font-family: 'Source Sans 3', sans-serif;
+  border-top: 1px solid #dedede;
+  display: flex;
+  flex-direction: row;
+  padding: 40px 40px 20px 40px;
+  background-color: white;
+}
+
+.gfg-footer .footer-wrapper_branding {
+  display: flex;
+  flex-direction: column;
+  max-width:310px;
+}
+
+#gplay {
+  top: -20px;
+  left: -35px;
+}
+#appstore {
+  top: -20px;
+  left: -80px;
+}
+
+.gfg-footer .footer-wrapper_branding-logo {
+  height: 85px;
+  width: 310px;
+  background-repeat: repeat;
+  background: url(https://media.geeksforgeeks.org/wp-content/cdn-uploads/NewGeeksLogo.svg);
+  background-size: 200%;
+  vertical-align: baseline;
+}
+
+.footer-wrapper_branding-nlogo {
+  max-width: 230px;
+  margin-bottom: 10px;
+  position: relative;
+  left: -26px;
+  top: -13px;
+
+}
+
+.gfg-footer .footer-wrapper_branding-logo.pre-dark {
+  background-position: -32px 86px;
+}
+
+.gfg-footer .footer-wrapper_branding-address,
+.gfg-footer .footer-wrapper_branding-email {
+  color: #696969;
+  display: flex;
+  flex-direction: row;
+  align-content: flex-start;
+  justify-content: start;
+  font-size: 11pt;
+  margin-bottom: 10px;
+}
+
+.gfg-footer .footer-wrapper_branding-address span {
+  line-height:1.3;
+}
+
+.gfg-footer .footer-wrapper_branding-address span,
+.gfg-footer .footer-wrapper_branding-address a,
+.gfg-footer .footer-wrapper_branding-email span,
+.gfg-footer .footer-wrapper_branding-email a {
+  margin-left: 10px;
+  margin-top: auto;
+  margin-bottom: auto;
+  text-decoration: none;
+  color: #696969;
+}
+
+.gfg-footer .footer-wrapper_branding-address a:hover,
+.gfg-footer .footer-wrapper_branding-email a:hover {
+  color: #308D46;
+}
+
+.gfg-footer .footer-wrapper_branding-social {
+  display: flex;
+  margin-top: 16px;
+}
+
+.gfg-footer .footer-wrapper_branding-social a div {
+  background-image: url(https://media.geeksforgeeks.org/wp-content/cdn-uploads/social_sprites_icons.svg);
+  margin-left: 5px;
+  display: inline-block;
+  background-size: 100%;
+  width: 38px;
+  height: 38px;
+}
+
+.footer-wrapper_branding-app img{
+  height: 29px;
+  width: 101px;
+}
+.footer-wrapper_branding-app{
+  display: flex; /* or inline-flex */
+  margin-top:29px;
+  margin-left: 5px;
+  margin-bottom: 20px;
+  gap:10.33px;
+}
+.gfg-footer .footer-wrapper_branding-social div.facebook {
+  background-position: 0px 0px;
+}
+.gfg-footer .footer-wrapper_branding-social div.facebook:hover {
+  background-position: 0px -190px;
+}
+.gfg-footer .footer-wrapper_branding-social div.instagram {
+  background-position: 0px -38px;
+}
+.gfg-footer .footer-wrapper_branding-social div.instagram:hover {
+  background-position: 0px -228px;
+}
+.gfg-footer .footer-wrapper_branding-social div.linkedin {
+  background-position: 0px -76px;
+}
+.gfg-footer .footer-wrapper_branding-social div.linkedin:hover {
+  background-position: 0px -266px;
+}
+.gfg-footer .footer-wrapper_branding-social div.twitter {
+  background-position: 0px -114px;
+}
+.gfg-footer .footer-wrapper_branding-social div.twitter:hover {
+  background-position: 0px -304px;
+}
+.gfg-footer .footer-wrapper_branding-social div.youtube {
+  background-position: 0px -152px;
+}
+.gfg-footer .footer-wrapper_branding-social div.youtube:hover {
+  background-position: 0px -342px;
+}
+.gfg-footer .footer-wrapper_branding-social div.android {
+  background-position: 0px -380px;
+}
+.gfg-footer .footer-wrapper_branding-social div.android:hover {
+  background-position: 0px -418px;
+}
+
+.gfg-footer .footer-wrapper_branding-social div.ios {
+  background-position: 0px -456px;
+}
+.gfg-footer .footer-wrapper_branding-social div.ios:hover {
+  background-position: 0px -494px;
+}
+
+.gfg-footer .footer-wrapper_links {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.gfg-footer .footer-wrapper_links-list {
+  width:16%;
+  display: flex;
+  list-style: none;
+  flex-direction: column;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 30px;
+}
+.link-head{
+  margin-bottom: -10px;
+}
+
+.gfg-footer .footer-wrapper_links-list li:first-child,
+.gfg-footer .footer-wrapper_links-list li:first-child a{
+  color: #308D46;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.37;
+
+}
+
+.gfg-footer .footer-wrapper_links-list li {
+  line-height: 1.47;
+}
+
+.gfg-footer .footer-wrapper_links-list li a {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.37;
+  text-decoration: none;
+  color: #696969;
+  display: inline-block;
+  text-align: initial;
+}
+
+.gfg-footer .footer-wrapper_links-list li a:hover {
+  color: #308D46;
+  text-decoration: none;
+}
+
+.gfg-footer .footer-wrapper i.material-icons {
+  font-size: 15pt;
+  color: #308D46;
+}
+
+.gfg-footer .footer-strip {
+  background-color: #308D46;;
+  font-family: 'Source Sans 3', sans-serif;
+  height: 40px;
+  display: flex;
+  padding-left: 40px;
+  color: white;
+}
+
+.gfg-footer .footer-strip .copyright {
+  align-items: center;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.gfg-footer .footer-strip .copyright a,
+.gfg-footer .footer-strip .copyright span {
+  font-size: 11pt;
+  text-decoration: none;
+  color: white;
+}
+
+@media (max-width: 1130px) {
+  .gfg-footer .footer-wrapper {
+    padding: 20px 20px 10px 20px;
+  }
+}
+
+.all-footer-information {
+    width: 100%;
+}
+
+@media (max-width: 991px) {
+  .all-footer-information {
+    padding-left: 15px;
+  }
+  .gfg-footer .footer-wrapper {
+    flex-direction: column;
+  }
+  .footer-wrapper_branding-anchor {
+    display: flex;
+  }
+
+  .footer-wrapper_branding-anchor .footer-wrapper_branding-nlogo {
+    margin: auto;
+    top: 0px;
+    left: 0px;
+    margin-bottom: 17px;
+
+  }
+  #gplay {
+    top: -20px;
+    left: 25px;
+  }
+  #appstore {
+    top: -20px;
+    left: -25px;
+  }
+
+  .gfg-footer .footer-wrapper_branding {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+  }
+
+  .gfg-footer .footer-wrapper_branding-logo.pre-dark {
+    background-position: 0px 86px;
+  }
+
+  .gfg-footer .footer-wrapper_branding-address,
+  .gfg-footer .footer-wrapper_branding-email {
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .gfg-footer .footer-wrapper_branding-address span,
+  .gfg-footer .footer-wrapper_branding-address a,
+  .gfg-footer .footer-wrapper_branding-address i,
+  .gfg-footer .footer-wrapper_branding-email span,
+  .gfg-footer .footer-wrapper_branding-email a,
+  .gfg-footer .footer-wrapper_branding-email i {
+    padding-bottom: 8px;
+  }
+
+  .gfg-footer .footer-wrapper_branding-address i.material-icons,
+  .gfg-footer .footer-wrapper_branding-email i.material-icons {
+    font-size: 16pt;
+  }
+
+  .gfg-footer .footer-wrapper_branding-social {
+    justify-content: center;
+    align-content: center;
+  }
+  .footer-wrapper_branding-app{
+    justify-content: center;
+  }
+
+  .gfg-footer .footer-strip {
+    padding-left: 0;
+  }
+
+  .gfg-footer .footer-strip .copyright {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .gfg-footer .footer-wrapper {
+    flex-direction: column;
+  }
+
+  .gfg-footer .footer-wrapper_links {
+    flex-wrap: wrap;
+  }
+
+  .gfg-footer .footer-wrapper_links-list {
+    padding: 0;
+    flex-basis: 50%;
+    align-items: center;
+  }
+}
+
+
+@media (max-width: 450px) {
+  .gfg-footer .footer-wrapper_links-list {
+    flex-basis: 100%;
+  }
+
+  .gfg-footer .footer-wrapper_branding-address,
+  .gfg-footer .footer-wrapper_branding-email {
+    font-size: 10.5pt;
+  }
+}
+/* FOOTER END */
+
+.relatedpost{
+margin:0;
+}
+
+/* CSS for AMP Consent */
+.consentPopup {
+      margin: 0 auto;
+      padding: 10px;
+      background: #fff;
+      position: fixed;
+      max-width: 840px;
+      width: 95%;
+      bottom:0;
+    }
+    .popupOverlay {
+      height: 100vh;
+      width: 100vw;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 5% 0;
+    }
+.accept-consent{
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    background-color:#4cb96b;
+    color:white;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    float:right;
+}
+
+.consent-text{
+    font-size:14px;
+    line-height:1.4;
+    color:#999;
+}
+
+.practiceButton{display:inline-block;background-color:#32a176;border-radius:16px;padding:4px;box-shadow:0 2px 5px 0 rgba(0,0,0,.4),0 6px 20px 0 rgba(0,0,0,0);margin-bottom:2%;margin-right:3px;
+font-family:sans-serif;
+}
+
+.practiceButton a,.practiceButton a:visited {
+color:white;
+text-decoration:none;
+font-size:13px;
+}
+
+amp-img {
+    white-space: normal;
+}
+
+.runIdeBtn{
+display:none;
+}
+
+/*CSS for Editor */
+.code-gutter{
+    display:none;
+}
+.code-output-container{
+    display:none;
+}
+
+/* For Text based ads in content */
+.textBasedMannualAds {
+  background-color: #F3FFF9;
+  padding: 15px;
+  margin-bottom:15px;
+  border-radius: 4px;
+}
+
+.textBasedMannualAds_2 {
+  background-color: #F3FFF9;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.textBasedMannualAds p,
+.textBasedMannualAds div,
+.textBasedMannualAds_2 p,
+.textBasedMannualAds_2 div {
+  color: #273239;
+}
+
+.textBasedMannualAds a,
+.textBasedMannualAds_2 a,
+.textBasedMannualAds a > *,
+.textBasedMannualAds_2 a > * {
+  color: #0f2b3c;
+  font-weight: 600;
+}
+
+.textBasedMannualAds p:last-child,
+.textBasedMannualAds_2 p:last-child,
+.textBasedMannualAds a img,
+.textBasedMannualAds_2 a img {
+  margin-bottom: 0;
+}
+.amp-recommended-articles-title{
+  color: #353535;
+  display: block;
+  flex: 1 0 100%;
+  font-weight: 900;
+  width: 100%;
+}
+textBasedMannualAds_2:empty{
+  display:none;
+}
+
+:root {
+          --color-gfg: #308D46;
+        }
+        .openInApp{
+           display: block;
+           bottom: 0px;
+            width: 100%;
+            position: fixed;
+            z-index: 1025;
+            opacity: 0.93;
+            height:44px;
+        }
+        
+        .openInAppLink{
+          height: 44px;
+            background: var(--color-gfg);
+            font-weight: bold;
+            display: block;
+            text-align: center;
+            padding: 8px;
+            font-size: large;
+        }
+        .openInAppLink, .openInAppLink:hover, .openInAppLink:active, .openInAppLink:visited, .openInAppLink:focus {
+            text-decoration:none;
+        }
+
+.three-90-banner
+{
+  margin-bottom:30px;
+  display:block;
+}
+
+// ----------------please donot modify this css ---- used for highlighting code block in AMP
+
+  .highlight .ge,
+  .highlight .ges,
+  .highlight .sd {
+    font-style: italic;
+  }
+
+  .highlight pre {
+    border-radius: 0px;
+    color: rgba(0, 0, 0, 0.9);
+    overflow: auto;
+    tab-size: 4;
+    font-size: 16px;
+    margin: 0em 0;
+    padding: 12px;
+    line-height: 125%;
+    background-color: white;
+  }
+
+  span.linenos,
+  td.linenos .normal {
+    color: inherit;
+    background-color: transparent;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  
+  span.linenos.special,
+  td.linenos .special {
+    color: #000;
+    background-color: #ffffc0;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .highlight .hll {
+    background-color: #ffc;
+  }
+
+  .highlight {
+    background: #f8f8f8;
+  }
+
+  .highlight .c,
+  .highlight .c1,
+  .highlight .ch,
+  .highlight .cm,
+  .highlight .cpf,
+  .highlight .cs {
+    color: #3d7b7b;
+    font-style: italic;
+  }
+
+  .highlight .err {
+    border: 1px solid transparent;
+  }
+
+  .highlight .k,
+  .highlight .kc,
+  .highlight .kd,
+  .highlight .kn,
+  .highlight .kr,
+  .highlight .nt {
+    color: green;
+    font-weight: 700;
+  }
+
+  .highlight .il,
+  .highlight .m,
+  .highlight .mb,
+  .highlight .mf,
+  .highlight .mh,
+  .highlight .mi,
+  .highlight .mo,
+  .highlight .o {
+    color: #666;
+  }
+
+  .highlight .cp {
+    color: #9c6500;
+  }
+
+  .highlight .gd {
+    color: #a00000;
+  }
+
+  .highlight .ges {
+    font-weight: 700;
+  }
+
+  .highlight .gr {
+    color: #e40000;
+  }
+
+  .highlight .gh,
+  .highlight .gp {
+    color: navy;
+    font-weight: 700;
+  }
+
+  .highlight .gi {
+    color: #008400;
+  }
+
+  .highlight .go {
+    color: #717171;
+  }
+
+  .highlight .gs {
+    font-weight: 700;
+  }
+
+  .highlight .gu {
+    color: purple;
+    font-weight: 700;
+  }
+
+  .highlight .gt {
+    color: #04d;
+  }
+
+  .highlight .bp,
+  .highlight .kp,
+  .highlight .nb,
+  .highlight .sx {
+    color: green;
+  }
+
+  .highlight .kt {
+    color: #b00040;
+  }
+
+  .highlight .dl,
+  .highlight .s,
+  .highlight .s1,
+  .highlight .s2,
+  .highlight .sa,
+  .highlight .sb,
+  .highlight .sc,
+  .highlight .sh {
+    color: #ba2121;
+  }
+
+  .highlight .na {
+    color: #687822;
+  }
+
+  .highlight .nc,
+  .highlight .nn {
+    color: #00f;
+    font-weight: 700;
+  }
+
+  .highlight .no {
+    color: #800;
+  }
+
+  .highlight .nd {
+    color: #a2f;
+  }
+
+  .highlight .ni {
+    color: #717171;
+    font-weight: 700;
+  }
+
+  .highlight .ne {
+    color: #cb3f38;
+    font-weight: 700;
+  }
+
+  .highlight .fm,
+  .highlight .nf {
+    color: #00f;
+  }
+
+  .highlight .nl {
+    color: #767600;
+  }
+
+  .highlight .nv,
+  .highlight .ss,
+  .highlight .vc,
+  .highlight .vg,
+  .highlight .vi,
+  .highlight .vm {
+    color: #19177c;
+  }
+
+  .highlight .ow {
+    color: #a2f;
+    font-weight: 700;
+  }
+
+  .highlight .w {
+    color: #bbb;
+  }
+
+  .highlight .sd {
+    color: #ba2121;
+  }
+
+  .highlight .se {
+    color: #aa5d1f;
+    font-weight: 700;
+  }
+
+  .highlight .si {
+    color: #a45a77;
+    font-weight: 700;
+  }
+
+  .highlight .sr {
+    color: #a45a77;
+  }		/* Inline styles */
+.amp-wp-inline-a0638896c455331d243fa1885cd1cc0b{margin:5px 0;}.amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628{text-align:center;}.amp-wp-inline-e3cb333ade10b0bff338057122e75423{margin:20px 0;max-height:280px;min-height:280px;text-align:center;}.amp-wp-inline-68c29a74def40559f5ea8ffd9171eff8{max-height:280px;text-align:center;}.amp-wp-inline-efcae58a9e42dcce3584f93a43e3fc6d{margin:20px 0;max-height:280px;text-align:center;}  </style>
+	  <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+    <script async custom-element="amp-accordion" src="https://cdn.ampproject.org/v0/amp-accordion-0.1.js"></script>
+    <script async custom-element="amp-consent" src="https://cdn.ampproject.org/v0/amp-consent-0.1.js"></script>
+    <script async custom-element="amp-geo" src="https://cdn.ampproject.org/v0/amp-geo-0.1.js"></script>
+<!--    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script> -->
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+</head>
+
+<body class="">
+
+<!-- Open in App Button and CSS-->
+<div id='openInApp-modal' class='openInApp'>
+    <a href = 'https://geeksforgeeksapp.page.link/?link=https://www.geeksforgeeks.org/basic-input-and-output-in-c/?type%3Darticle%26id%3D254711&amp;apn=free.programming.programming&amp;isi=1641848816&amp;ibi=org.geeksforgeeks.GeeksforGeeksDev&amp;efr=1' class='openInAppLink'>
+        <span style='color: #fff;'>Open In App</span>
+    </a>
+</div>
+
+<header id="top" class="container">
+    <div id="headerwrap">
+        <div id="header">
+            <div class="hamburgermenu">
+                <button class="toast pull-left" on="tap:sidebar.toggle" aria-label="Hamburger button"><span></span></button>
+            </div>
+            <div class="headerlogo">
+                <div class="amp-logo">
+                    <h1><a href="https://www.geeksforgeeks.org/">GeeksforGeeks</a></h1>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</header>
+<amp-sidebar id="sidebar" layout="nodisplay" side="left">
+    <div class="toggle-navigationv2">
+        <nav id="primary-amp-menu" itemscope="" itemtype="https://schema.org/SiteNavigationElement">
+            <div class="menu-menu-container">
+                <ul id="menu-top" class="nav-menu">
+                    <li id="menu-item-135" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item menu-item-home menu-item-135"><a href="https://www.geeksforgeeks.org/" itemprop="url"><span itemprop="name"><h4>Home</h4></span></a></li>
+                    <li id="menu-item-136" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item menu-item-home menu-item-136"><a href="https://www.geeksforgeeks.org/community/?ref=amp" itemprop="url"><span itemprop="name"><h4>Explore Community</h4></span></a></li>
+                    <amp-accordion disable-session-states>
+                        <section>
+                            <h4 class="menu-item">
+                                <span class="show-more">Algorithms<span class="menu-item-expand">+</span></span>
+                                <span class="show-less">Algorithms<span class="menu-item-expand">-</span></span>
+                            </h4>
+                            <ul class="sub-menu">
+                                <li id="menu-item-146911" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146911"><a href="https://www.geeksforgeeks.org/fundamentals-of-algorithms/" class="">All Algorithms</a></li>
+                                <li id="menu-item-135030" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-135030"><a href="https://www.geeksforgeeks.org/fundamentals-of-algorithms/#AnalysisofAlgorithms" class="">Analysis of Algorithms</a></li>
+                                <li id="menu-item-147774" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-147774"><a href="https://www.geeksforgeeks.org/searching-algorithms/" class="">Searching Algorithms</a></li>
+                                <li id="menu-item-147773" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-147773"><a href="https://www.geeksforgeeks.org/sorting-algorithms/" class="">Sorting Algorithms</a></li>
+                                <li id="menu-item-135041" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-135041"><a href="https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/" class="">Graph Algorithms</a></li>
+                                <li id="menu-item-135040" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-135040"><a href="https://www.geeksforgeeks.org/bitwise-algorithms/" class="">Bit Algorithms</a></li>
+                                <li id="menu-item-135034" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-135034"><a href="https://www.geeksforgeeks.org/fundamentals-of-algorithms/#PatternSearching" class="">Pattern Searching</a></li>
+                                <li id="menu-item-135038" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-135038"><a href="https://www.geeksforgeeks.org/geometric-algorithms/" class="">Geometric Algorithms</a></li>
+                                <li id="menu-item-135039" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-135039"><a href="https://www.geeksforgeeks.org/mathematical-algorithms/" class="">Mathematical Algorithms</a></li>
+                                <li id="menu-item-135042" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-135042"><a href="https://www.geeksforgeeks.org/randomized-algorithms/" class="">Randomized Algorithms</a></li>
+                                <li id="menu-item-156520" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-156520"><a href="https://www.geeksforgeeks.org/category/algorithm/game-theory/" class="">Game Theory</a></li>
+
+                                <!-- </li> -->
+                                <li id="menu-item-135032" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-135032"><a href="https://www.geeksforgeeks.org/greedy-algorithms/" class="">Greedy Algorithms</a></li>
+                                <li id="menu-item-135033" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-135033"><a href="https://www.geeksforgeeks.org/dynamic-programming/" class="">Dynamic Programming</a></li>
+                                <li id="menu-item-135037" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-135037"><a href="https://www.geeksforgeeks.org/divide-and-conquer/" class="">Divide and Conquer</a></li>
+                                <li id="menu-item-135036" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-135036"><a href="https://www.geeksforgeeks.org/backtracking-algorithms/" class="">Backtracking</a></li>
+                                <li id="menu-item-137933" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-137933"><a href="https://www.geeksforgeeks.org/fundamentals-of-algorithms/#BranchandBound" class="">Branch &amp; Bound</a></li>
+
+
+                            </ul>
+                            <!-- </li> -->
+                        </section>
+
+                        <section>
+                            <h4 class="menu-item">
+                                <span class="show-more">Data Structures<span class="menu-item-expand">+</span></span>
+                                <span class="show-less">Data Structures<span class="menu-item-expand">-</span></span>
+                            </h4>
+                            <!-- <li id="menu-item-142016" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-142016"><a href="https://www.geeksforgeeks.org/data-structures/" class="">DS  ▼</a> -->
+                            <ul class="sub-menu">
+                                <li id="menu-item-135056" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-135056"><a href="https://www.geeksforgeeks.org/data-structures/" class="">All Data Structures</a></li>
+                                <li id="menu-item-135054" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-135054"><a href="https://www.geeksforgeeks.org/array-data-structure/" class="">Array</a></li>
+                                <li id="menu-item-135045" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-135045"><a href="https://www.geeksforgeeks.org/data-structures/linked-list/" class="">LinkedList</a></li>
+                                <li id="menu-item-135046" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-135046"><a href="https://www.geeksforgeeks.org/stack-data-structure/" class="">Stack</a></li>
+                                <li id="menu-item-135047" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-135047"><a href="https://www.geeksforgeeks.org/queue-data-structure/" class="">Queue</a></li>
+                                <li id="menu-item-135048" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-135048"><a href="https://www.geeksforgeeks.org/binary-tree-data-structure/" class="">Binary Tree</a></li>
+                                <li id="menu-item-135049" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-135049"><a href="https://www.geeksforgeeks.org/binary-search-tree-data-structure/" class="">Binary Search Tree</a></li>
+                                <li id="menu-item-135050" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-135050"><a href="https://www.geeksforgeeks.org/heap-data-structure/" class="">Heap</a></li>
+                                <li id="menu-item-135051" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-135051"><a href="https://www.geeksforgeeks.org/hashing-data-structure/" class="">Hashing</a></li>
+                                <li id="menu-item-135052" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-135052"><a href="https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/" class="">Graph</a></li>
+                                <li id="menu-item-135053" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-135053"><a href="https://www.geeksforgeeks.org/advanced-data-structures/" class="">Advanced Data Structure</a></li>
+                                <li id="menu-item-135055" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-135055"><a href="https://www.geeksforgeeks.org/matrix/" class="">Matrix</a></li>
+                                <li id="menu-item-147716" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-147716"><a href="https://www.geeksforgeeks.org/string-data-structure/" class="">Strings</a></li>
+
+                            </ul>
+                            <!--                     </li>
+ -->
+                        </section>
+                        <!-- <li id="menu-item-147478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-147478"><a href="https://www.geeksforgeeks.org/category/program-output/" class="">Languages ▼</a> -->
+
+                        <section>
+                            <h4 class="menu-item">
+                                <span class="show-more">Languages<span class="menu-item-expand">+</span></span>
+                                <span class="show-less">Languages<span class="menu-item-expand">-</span></span>
+                            </h4>
+                            <ul class="sub-menu">
+                                <li id="menu-item-135006" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-135006"><a href="https://www.geeksforgeeks.org/c-programming-language/" class="">C</a></li>
+                                <li id="menu-item-135007" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-135007"><a href="https://www.geeksforgeeks.org/c-plus-plus/" class="">C++</a></li>
+                                <li id="menu-item-135012" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-135012"><a href="https://www.geeksforgeeks.org/java/" class="">Java</a></li>
+                                <li id="menu-item-137004" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-137004"><a href="https://www.geeksforgeeks.org/python-programming-language/" class="">Python</a></li>
+                                <li id="menu-item-135016" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-135016"><a href="https://www.geeksforgeeks.org/sql-tutorial/" class="">SQL</a></li>
+                                <li id="menu-item-182096" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-182096"><a href="https://www.geeksforgeeks.org/php/" class="">PHP</a></li>
+                                <li id="menu-item-188679" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-188679"><a href="https://www.geeksforgeeks.org/javascript-tutorial/" class="">Javascript</a></li>
+                                <li id="menu-item-140854" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-140854"><a title="https://www.geeksforgeeks.org/category/program-output/" href="https://www.geeksforgeeks.org/category/program-output/" class="">Program Output</a></li>
+                            </ul>
+                        </section>
+                        <!-- </li> -->
+
+                        <section>
+                            <h4 class="menu-item">
+                                <span class="show-more">Interview<span class="menu-item-expand">+</span></span>
+                                <span class="show-less">Interview<span class="menu-item-expand">-</span></span>
+                            </h4>
+                            <!-- <li id="menu-item-142017" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-142017"><a href="https://www.geeksforgeeks.org/about/interview-corner/" class="">Interview  ▼</a> -->
+                            <ul class="sub-menu">
+                                <li id="menu-item-141326" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-141326"><a href="https://www.geeksforgeeks.org/company-preparation/" class="">Company Prep</a></li>
+                                <li id="menu-item-137171" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-137171"><a href="https://www.geeksforgeeks.org/interview-preparation-for-software-developer/" class="">Top Topics</a></li>
+                                <li id="menu-item-137172" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-137172"><a href="https://practice.geeksforgeeks.org/company-tags" class="">Practice Company Questions</a></li>
+                                <li id="menu-item-137173" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-137173"><a href="https://www.geeksforgeeks.org/about/interview-corner/" class="">Interview Experiences</a></li>
+                                <li id="menu-item-137174" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-137174"><a href="https://www.geeksforgeeks.org/category/interview-experiences/experienced-interview-experiences/" class="">Experienced Interviews</a></li>
+                                <li id="menu-item-137175" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-137175"><a href="https://www.geeksforgeeks.org/category/interview-experiences/internship-interview-experiences/" class="">Internship Interviews</a></li>
+                                <li id="menu-item-137176" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-137176"><a href="https://www.geeksforgeeks.org/category/competitive-programming/" class="">Competitive Programming</a></li>
+                                <li id="menu-item-147581" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-147581"><a href="https://www.geeksforgeeks.org/software-design-patterns/" class="">Design Patterns</a></li>
+                                <li id="menu-item-137186" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-137186"><a href="https://www.geeksforgeeks.org/quiz-corner-gq/" class="">Multiple Choice Quizzes</a></li>
+                            </ul>
+                            <!-- </li> -->
+                        </section>
+                        <!-- <li id="menu-item-137178" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-137178"><a href="https://www.geeksforgeeks.org/student-corner/" class="">Students  ▼</a> -->
+
+                        <section>
+                            <h4 class="menu-item">
+                                <span class="show-more">Students<span class="menu-item-expand">+</span></span>
+                                <span class="show-less">Students<span class="menu-item-expand">-</span></span>
+                            </h4>
+                            <ul class="sub-menu">
+                                <li id="menu-item-137183" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-137183"><a href="https://www.geeksforgeeks.org/campus-ambassador-program-by-geeksforgeeks/" class="">Campus Ambassador Program</a></li>
+                                <li id="menu-item-137179" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-137179"><a href="https://www.geeksforgeeks.org/geek-of-the-month/" class="">Geek of the Month</a></li>
+                                <li id="menu-item-137570" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-137570"><a href="https://www.geeksforgeeks.org/placements-gq/" class="">Placement Course</a></li>
+                                <li id="menu-item-136004" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-136004"><a href="https://www.geeksforgeeks.org/category/project/" class="">Project</a></li>
+                                <li id="menu-item-137180" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-137180"><a href="https://www.geeksforgeeks.org/category/competitive-programming/" class="">Competitive Programming</a></li>
+                                <li id="menu-item-137181" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-137181"><a href="https://www.geeksforgeeks.org/testimonials/" class="">Testimonials</a></li>
+                                <li id="menu-item-138863" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-138863"><a href="https://www.geeksforgeeks.org/category/geek-on-the-top/" class="">Geek on the Top</a></li>
+                                <li id="menu-item-141974" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-141974"><a href="https://www.geeksforgeeks.org/careers/" class="">Careers</a></li>
+                                <li id="menu-item-137378" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-137378"><a href="https://www.geeksforgeeks.org/internship/" class="">Internship</a></li>
+                                <li id="menu-item-147457" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-147457"><a href="https://www.geeksforgeeks.org/school-programming/" class="">School Programming</a></li>
+                            </ul>
+                        </section>
+                        <!-- </li> -->
+
+                        <section>
+                            <h4 class="menu-item">
+                                <span class="show-more">GATE<span class="menu-item-expand">+</span></span>
+                                <span class="show-less">GATE<span class="menu-item-expand">-</span></span>
+                            </h4>
+                            <!-- <li id="menu-item-146712" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-146712"><a href="https://www.geeksforgeeks.org/gate-corner-2-gq/" class="">GATE ▼</a> -->
+                            <ul class="sub-menu">
+                                <li id="menu-item-146713" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146713"><a href="https://www.geeksforgeeks.org/gate-corner-2-gq/" class="">GATE CS Corner</a></li>
+                                <li id="menu-item-146714" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146714"><a href="https://www.geeksforgeeks.org/gate-cs-notes-gq/" class="">GATE Notes</a></li>
+                                <li id="menu-item-146715" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146715"><a href="https://www.geeksforgeeks.org/lmns-gq/" class="">Last Minute Notes</a></li>
+                                <li id="menu-item-146716" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146716"><a href="https://www.geeksforgeeks.org/original-gate-previous-year-question-papers-cse-and-it-gq/" class="">Official Papers</a></li>
+                                <li id="menu-item-146717" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146717"><a href="https://www.geeksforgeeks.org/gate-cs-2021-official-important-dates/" class="">Gate 2021 Dates</a></li>
+                            </ul>
+                        </section>
+                        <!-- </li> -->
+
+                        <section>
+                            <h4 class="menu-item">
+                                <span class="show-more">CS Subjects<span class="menu-item-expand">+</span></span>
+                                <span class="show-less">CS Subjects<span class="menu-item-expand">-</span></span>
+                            </h4>
+                            <!-- <li id="menu-item-146718" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-146718"><a href="https://www.geeksforgeeks.org/articles-on-computer-science-subjects-gq/" class="">CS Subjects ▼</a> -->
+                            <ul class="sub-menu">
+                                <li id="menu-item-146729" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146729"><a href="https://www.geeksforgeeks.org/operating-systems/" class="">Operating Systems</a></li>
+                                <li id="menu-item-146724" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146724"><a href="https://www.geeksforgeeks.org/dbms/" class="">DBMS</a></li>
+                                <li id="menu-item-146721" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146721"><a href="https://www.geeksforgeeks.org/computer-network-tutorials/" class="">Computer Networks</a></li>
+                                <li id="menu-item-146720" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146720"><a href="https://www.geeksforgeeks.org/compiler-design-tutorials/" class="">Compiler Design</a></li>
+                                <li id="menu-item-147831" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-147831"><a href="https://www.geeksforgeeks.org/web-technology/" class="">Web Technology</a></li>
+                                <li id="menu-item-146722" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146722"><a href="https://www.geeksforgeeks.org/computer-organization-and-architecture-tutorials/" class="">Computer Organization &amp; Architecture</a></li>
+                                <li id="menu-item-146726" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146726"><a href="https://www.geeksforgeeks.org/digital-electronics-logic-design-tutorials/" class="">Digital Electronics</a></li>
+                                <li id="menu-item-146727" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146727"><a href="https://www.geeksforgeeks.org/engineering-mathematics-tutorials/" class="">Engg. Mathematics</a></li>
+                                <li id="menu-item-146730" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146730"><a href="https://www.geeksforgeeks.org/theory-of-computation-automata-tutorials/" class="">Theory of Computation</a></li>
+                                <li id="menu-item-147512" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-147512"><a href="https://www.geeksforgeeks.org/advanced-computer-subjects-tutorials/" class="">Advanced Topics</a></li>
+                                <li id="menu-item-146725" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146725"><a href="https://www.geeksforgeeks.org/category/difference-between/" class="">What’s Difference?</a></li>
+                            </ul>
+                        </section>
+                        <!-- </li> -->
+
+                        <section>
+                            <h4 class="menu-item">
+                                <span class="show-more">Quizzes<span class="menu-item-expand">+</span></span>
+                                <span class="show-less">Quizzes<span class="menu-item-expand">-</span></span>
+                            </h4>
+                            <!-- <li id="menu-item-140855" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-140855"><a href="https://quiz.geeksforgeeks.org/quiz-corner/" class="">Quizzes ▼</a> -->
+                            <ul class="sub-menu">
+                                <li id="menu-item-146743" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146743"><a href="https://www.geeksforgeeks.org/quiz-corner-gq/#C%20Programming%20Mock%20Tests" class="">C</a></li>
+                                <li id="menu-item-146745" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146745"><a href="https://www.geeksforgeeks.org/quiz-corner-gq/#C++%20Programming%20Mock%20Tests" class="">C++</a></li>
+                                <li id="menu-item-146746" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146746"><a href="https://www.geeksforgeeks.org/quiz-corner-gq/#Java%20Programming%20Mock%20Tests" class="">Java</a></li>
+                                <li id="menu-item-146747" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146747"><a href="https://www.geeksforgeeks.org/quiz-corner-gq/#Python%20Programming%20Mock%20Tests" class="">Python</a></li>
+                                <li id="menu-item-146731" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146731"><a href="https://www.geeksforgeeks.org/quiz-corner-gq/#Data%20Structures%20Mock%20Tests" class="">Data Structures</a></li>
+                                <li id="menu-item-146732" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146732"><a href="https://www.geeksforgeeks.org/quiz-corner-gq/#Algorithms%20Mock%20Tests" class="">Algorithms</a></li>
+                                <li id="menu-item-146733" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146733"><a href="https://www.geeksforgeeks.org/quiz-corner-gq/#Operating%20Systems%20Mock%20Tests" class="">Operating Systems</a></li>
+                                <li id="menu-item-146734" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146734"><a href="https://www.geeksforgeeks.org/quiz-corner-gq/#DBMS%20Mock%20Tests" class="">DBMS</a></li>
+                                <li id="menu-item-146735" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146735"><a href="https://www.geeksforgeeks.org/quiz-corner-gq/#Compiler%20Design%20Mock%20Tests" class="">Compiler Design</a></li>
+                                <li id="menu-item-146736" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146736"><a href="https://www.geeksforgeeks.org/quiz-corner-gq/#Computer%20Networks%20Mock%20Tests" class="">Computer Networks</a></li>
+                                <li id="menu-item-146737" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146737"><a href="https://www.geeksforgeeks.org/quiz-corner-gq/#Theory%20of%20Computation%20Mock%20Tests" class="">Theory of Computation</a></li>
+                                <li id="menu-item-146738" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146738"><a href="https://www.geeksforgeeks.org/quiz-corner-gq/#Computer%20Organization%20and%20Architecture" class="">Computer Organization</a></li>
+                                <li id="menu-item-146739" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146739"><a href="https://www.geeksforgeeks.org/software-engineering-gq/" class="">Software Engineering</a></li>
+                                <li id="menu-item-146740" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146740"><a href="https://www.geeksforgeeks.org/html-and-xml-gq/" class="">HTML &amp; XML</a></li>
+                                <li id="menu-item-146741" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146741"><a href="https://www.geeksforgeeks.org/quiz-corner-gq/#Engineering%20Mathematics" class="">Engg. Mathematics</a></li>
+                                <li id="menu-item-146742" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146742"><a href="https://www.geeksforgeeks.org/quiz-corner-gq/#Aptitude%20Mock%20Tests" class="">Aptitude</a></li>
+                            </ul>
+                        </section>
+                    </amp-accordion>
+                    <!-- </li> -->
+                    <li id="menu-item-135367" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-135367">
+                        <a href="https://www.geeksforgeeks.org/category/guestblogs/" class="">
+                            <h4>GBlog</h4>
+                        </a>
+                    </li>
+                    <li id="menu-item-141885" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-141885">
+                        <a href="https://www.geeksforgeeks.org/puzzles/" class="">
+                            <h4>Puzzles</h4>
+                        </a>
+                    </li>
+                    <li id="menu-item-141816" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-141816">
+                        <a href="https://www.geeksforgeeks.org/geeks-classes-geeksforgeeks/" class="">
+                            <h4>What's New?</h4>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="social_icons">
+            <ul>
+                <a href="#" target="_blank">
+                    <li class="icon-twitter"></li>
+                </a>
+                <a href="#" target="_blank">
+                    <li class="icon-facebook"></li>
+                </a>
+                <a href="#" target="_blank">
+                    <li class="icon-pinterest"></li>
+                </a>
+                <a href="#" target="_blank">
+                    <li class="icon-youtube-play"></li>
+                </a>
+            </ul>
+        </div>
+    </div>
+</amp-sidebar>
+
+<amp-geo layout="nodisplay">
+  <script type="application/json">
+    {
+      "ISOCountryGroups": {
+        "eu": ["al", "ad", "am", "at", "by", "be", "ba", "bg", "ch", "cy", "cz", "de", "dk", "ee", "es", "fo", "fi", "fr", "gb", "ge", "gi", "gr", "hu", "hr", "ie", "is", "it", "lt", "lu", "lv", "mc", "mk", "mt", "no", "nl", "po", "pt", "ro", "ru", "se", "si", "sk", "sm", "tr", "ua", "uk", "va"]
+      }
+    }
+  </script>
+</amp-geo>
+<amp-consent id="myUserConsent"
+  layout="nodisplay">
+  <script type="application/json">
+    {
+      "consents": {
+        "eu": {
+          "promptIfUnknownForGeoGroup":"eu",
+          "promptUI": "consentDialog"
+        }
+      }
+    }
+  </script>
+  <div class="popupOverlay"
+    id="consentDialog">
+    <div class="consentPopup">
+      <p class="consent-text m1">We use cookies to ensure you have the best browsing experience on our website. By using our site, you acknowledge that you have read and understood our <a href="https://www.geeksforgeeks.org/cookie-policy/" class="consent-link" target="_blank">Cookie Policy</a> & <a href="https://www.geeksforgeeks.org/privacy-policy/" class="consent-link" target="_blank">Privacy Policy</a></p>
+      <button on="tap:myUserConsent.accept"
+        class="accept-consent ampstart-btn ampstart-btn-secondary caps mx1">Got It!</button>
+    </div>
+  </div>
+</amp-consent>
+<article class="amp-wp-article">
+	<header class="amp-wp-article-header">
+		<h1 class="amp-wp-title">Basic Input and Output in C</h1>
+	</header>
+
+	
+	<div class="amp-wp-article-content">
+		<p dir="ltr"><span>C language has standard libraries that allow input and output in a program. The </span><b><strong>stdio.h</strong></b><span> or </span><b><strong>standard input output library</strong></b><span> in C that has methods for input and output.</span></p>
+
+<h3><span>scanf()</span></h3><p dir="ltr"><span>The scanf() method, in C, reads the value from the console as per the type specified and store it in the given address.</span></p>
+
+<p dir="ltr"><b><strong>Syntax:</strong></b></p>
+
+<pre><span>scanf("%X", &amp;variableOfXType);</span></pre><p dir="ltr"><span>where </span><b><strong>%X</strong></b><span> is the </span><a href="https://www.geeksforgeeks.org/format-specifiers-in-c/amp/"><span>format specifier in C</span></a><span>. It is a way to tell the compiler what type of data is in a variable and </span><b><strong>&amp;</strong></b><span> is the address operator in C, which tells the compiler to change the real value of </span><b><strong>variableOfXType</strong></b><span>, stored at this address in the memory.</span></p>
+
+<p dir="ltr"><br></p>
+
+<h3><span>printf()</span></h3><p dir="ltr"><span>The printf() method, in C, prints the value passed as the parameter to it, on the console screen.</span></p>
+
+<p dir="ltr"><b><strong>Syntax:</strong></b></p>
+
+<pre><span>printf("%X", variableOfXType);</span></pre><p dir="ltr"><span>where </span><b><strong>%X</strong></b><span> is the format specifier in C. It is a way to tell the compiler what type of data is in a variable and </span><b><strong>variableOfXType </strong></b><span>is the variable to be printed.</span></p>
+
+<h3><span>How to take input and output of basic types in C?</span></h3><p dir="ltr"><span>The basic type in C includes types like int, float, char, etc. Inorder to input or output the specific type, the </span><b><strong>X</strong></b><span> in the above syntax is changed with the specific format specifier of that type. The Syntax for input and output for these are:</span></p>
+
+<ul><li value="1"><b><strong>Integer:</strong></b></li></ul><pre><b><strong>Input:</strong></b><span> scanf("%d", &amp;intVariable);
+</span><b><strong>Output:</strong></b><span> printf("%d", intVariable);</span></pre><ul><li value="1"><b><strong>Float:</strong></b></li></ul><pre><b><strong>Input:</strong></b><span> scanf("%f", &amp;floatVariable);
+</span><b><strong>Output:</strong></b><span> printf("%f", floatVariable);</span></pre><ul><li value="1"><b><strong>Character:</strong></b></li></ul><pre><b><strong>Input:</strong></b><span> scanf("%c", &amp;charVariable);
+</span><b><strong>Output:</strong></b><span> printf("%c", charVariable);</span></pre><p dir="ltr"><span>Please refer Format specifiers in C for more examples.&nbsp;</span></p>
+
+<amp-selector role="tablist" layout="container" class="ampTabContainer"><div role="tab" class="tabButton" selected option="1" aria-selected="false" tabindex="0">C</div>
+<div role="tabpanel" class="tabContent" data-code-lang="c">
+    <code class="language-c"><div class=highlight><pre><span></span><span class=c1>// C program to show input and output</span>
+
+<span class=cp>#include</span><span class=w> </span><span class=cpf>&lt;stdio.h&gt;</span>
+
+<span class=kt>int</span><span class=w> </span><span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+
+<span class=w>    </span><span class=c1>// Declare the variables</span>
+<span class=w>    </span><span class=kt>int</span><span class=w> </span><span class=n>num</span><span class=p>;</span>
+<span class=w>    </span><span class=kt>char</span><span class=w> </span><span class=n>ch</span><span class=p>;</span>
+<span class=w>    </span><span class=kt>float</span><span class=w> </span><span class=n>f</span><span class=p>;</span>
+
+<span class=w>    </span><span class=c1>// --- Integer ---</span>
+
+<span class=w>    </span><span class=c1>// Input the integer</span>
+<span class=w>    </span><span class=n>printf</span><span class=p>(</span><span class=s>&quot;Enter the integer: &quot;</span><span class=p>);</span>
+<span class=w>    </span><span class=n>scanf</span><span class=p>(</span><span class=s>&quot;%d&quot;</span><span class=p>,</span><span class=w> </span><span class=o>&amp;</span><span class=n>num</span><span class=p>);</span>
+
+<span class=w>    </span><span class=c1>// Output the integer</span>
+<span class=w>    </span><span class=n>printf</span><span class=p>(</span><span class=s>&quot;</span><span class=se>\n</span><span class=s>Entered integer is: %d&quot;</span><span class=p>,</span><span class=w> </span><span class=n>num</span><span class=p>);</span>
+
+<span class=w>    </span><span class=c1>// --- Float ---</span>
+<span class=w>  </span>
+<span class=w>    </span><span class=c1>//For input Clearing buffer</span>
+<span class=w>      </span><span class=k>while</span><span class=p>((</span><span class=n>getchar</span><span class=p>())</span><span class=w> </span><span class=o>!=</span><span class=w> </span><span class=sc>&#39;\n&#39;</span><span class=p>);</span>
+
+<span class=w>    </span><span class=c1>// Input the float</span>
+<span class=w>    </span><span class=n>printf</span><span class=p>(</span><span class=s>&quot;</span><span class=se>\n\n</span><span class=s>Enter the float: &quot;</span><span class=p>);</span>
+<span class=w>    </span><span class=n>scanf</span><span class=p>(</span><span class=s>&quot;%f&quot;</span><span class=p>,</span><span class=w> </span><span class=o>&amp;</span><span class=n>f</span><span class=p>);</span>
+
+<span class=w>    </span><span class=c1>// Output the float</span>
+<span class=w>    </span><span class=n>printf</span><span class=p>(</span><span class=s>&quot;</span><span class=se>\n</span><span class=s>Entered float is: %f&quot;</span><span class=p>,</span><span class=w> </span><span class=n>f</span><span class=p>);</span>
+
+<span class=w>    </span><span class=c1>// --- Character ---</span>
+
+<span class=w>    </span><span class=c1>// Input the Character</span>
+<span class=w>    </span><span class=n>printf</span><span class=p>(</span><span class=s>&quot;</span><span class=se>\n\n</span><span class=s>Enter the Character: &quot;</span><span class=p>);</span>
+<span class=w>    </span><span class=n>scanf</span><span class=p>(</span><span class=s>&quot;%c&quot;</span><span class=p>,</span><span class=w> </span><span class=o>&amp;</span><span class=n>ch</span><span class=p>);</span>
+
+<span class=w>    </span><span class=c1>// Output the Character</span>
+<span class=w>    </span><span class=n>printf</span><span class=p>(</span><span class=s>&quot;</span><span class=se>\n</span><span class=s>Entered character is: %c&quot;</span><span class=p>,</span><span class=w> </span><span class=n>ch</span><span class=p>);</span>
+
+<span class=w>    </span><span class=k>return</span><span class=w> </span><span class=mi>0</span><span class=p>;</span>
+<span class=p>}</span>
+</pre></div></code>
+</div></amp-selector><div class="code-output"><br><strong>Output</strong><pre>Enter the integer: 10
+Entered integer is: 10
+
+Enter the float: 2.5
+Entered float is: 2.500000
+
+Enter the Character: A
+Entered Character is: A</pre></div><h3><span>How to take input and output of advanced type in C?</span></h3><p dir="ltr"><span>The advanced type in C includes type like String. In order to input or output the string type, the </span><b><strong>X</strong></b><span> in the above syntax is changed with the </span><b><strong>%s</strong></b><span> format specifier. The Syntax for input and output for String is:</span></p>
+
+<pre><b><strong>Input:</strong></b><span> scanf("%s", stringVariable);
+</span><b><strong>Output:</strong></b><span> printf("%s", stringVariable);</span></pre><p dir="ltr"><b><strong>Example:</strong></b><span>&nbsp;</span></p>
+
+<amp-selector role="tablist" layout="container" class="ampTabContainer"><div role="tab" class="tabButton" selected option="2" aria-selected="false" tabindex="0">C</div>
+<div role="tabpanel" class="tabContent" data-code-lang="c">
+    <code class="language-c"><div class=highlight><pre><span></span><span class=c1>// C program to show input and output</span>
+<span class=w> </span>
+<span class=cp>#include</span><span class=w> </span><span class=cpf>&lt;stdio.h&gt;</span>
+<span class=w> </span>
+<span class=kt>int</span><span class=w> </span><span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+<span class=w> </span>
+<span class=w>    </span><span class=c1>// Declare string variable</span>
+<span class=w>    </span><span class=c1>// as character array</span>
+<span class=w>    </span><span class=kt>char</span><span class=w> </span><span class=n>str</span><span class=p>[</span><span class=mi>50</span><span class=p>];</span>
+<span class=w> </span>
+<span class=w>    </span><span class=c1>// --- String ---</span>
+<span class=w>    </span><span class=c1>// To read a word</span>
+<span class=w> </span>
+<span class=w>    </span><span class=c1>// Input the Word</span>
+<span class=w>    </span><span class=n>printf</span><span class=p>(</span><span class=s>&quot;Enter the Word: &quot;</span><span class=p>);</span>
+<span class=w>    </span><span class=n>scanf</span><span class=p>(</span><span class=s>&quot;%s</span><span class=se>\n</span><span class=s>&quot;</span><span class=p>,</span><span class=w> </span><span class=n>str</span><span class=p>);</span>
+<span class=w> </span>
+<span class=w>    </span><span class=c1>// Output the Word</span>
+<span class=w>    </span><span class=n>printf</span><span class=p>(</span><span class=s>&quot;</span><span class=se>\n</span><span class=s>Entered Word is: %s&quot;</span><span class=p>,</span><span class=w> </span><span class=n>str</span><span class=p>);</span>
+<span class=w> </span>
+<span class=w>    </span><span class=c1>// --- String ---</span>
+<span class=w>    </span><span class=c1>// To read a Sentence</span>
+<span class=w> </span>
+<span class=w>    </span><span class=c1>// Input the Sentence</span>
+<span class=w>    </span><span class=n>printf</span><span class=p>(</span><span class=s>&quot;</span><span class=se>\n\n</span><span class=s>Enter the Sentence: &quot;</span><span class=p>);</span>
+<span class=w>    </span><span class=n>scanf</span><span class=p>(</span><span class=s>&quot;%[^</span><span class=se>\n</span><span class=s>]s&quot;</span><span class=p>,</span><span class=w> </span><span class=n>str</span><span class=p>);</span>
+<span class=w> </span>
+<span class=w>    </span><span class=c1>// Output the String</span>
+<span class=w>    </span><span class=n>printf</span><span class=p>(</span><span class=s>&quot;</span><span class=se>\n</span><span class=s>Entered Sentence is: %s&quot;</span><span class=p>,</span><span class=w> </span><span class=n>str</span><span class=p>);</span>
+<span class=w> </span>
+<span class=w>    </span><span class=k>return</span><span class=w> </span><span class=mi>0</span><span class=p>;</span>
+<span class=p>}</span>
+</pre></div></code>
+</div></amp-selector><div class="code-output"><br><strong>Output</strong><pre>Enter the Word: GeeksForGeeks
+Entered Word is: GeeksForGeeks
+
+Enter the Sentence: Geeks For Geeks
+Entered Sentence is: Geeks For Geeks</pre></div><h3><span>Related Articles:</span></h3><ul><li value="1"><a href="https://www.geeksforgeeks.org/scanf-in-c/amp/" target="_blank" rel="noopener"><span>scanf in C</span></a></li><li value="2"><a href="https://www.geeksforgeeks.org/printf-in-c/amp/" target="_blank" rel="noopener"><span>printf in C</span></a></li></ul>
+
+<p><br></p>
+
+	<div style="margin-top:15px;">
+        <b style="color: #757575;">Article Tags : </b>
+        <div class="practiceButton">
+            <a href="https://www.geeksforgeeks.org/category/programming-language/c/" rel="category tag">C Language</a>        </div>
+
+		<div class="practiceButton"><a href="https://www.geeksforgeeks.org/tag/c-input-output/" rel="tag">c-input-output</a></div>	</div>
+	</div>
+
+      <div style="margin:10px 0px;">
+      <div>
+          <div class="amp-recommended-articles-title">Recommended Articles</div>
+      </div>
+      <div>
+          
+          <div class="head"><span>1. </span><a href="https://www.geeksforgeeks.org/c-input-and-output-question-1/amp/" title="Permalink to C | Input and Output | Question 13" rel="bookmark" class="c-wrap">C | Input and Output | Question 13</a></div>
+          <div class="head"><span>2. </span><a href="https://www.geeksforgeeks.org/c-input-and-output-question-2/amp/" title="Permalink to C | Input and Output | Question 2" rel="bookmark" class="c-wrap">C | Input and Output | Question 2</a></div>
+          <div class="head"><span>3. </span><a href="https://www.geeksforgeeks.org/c-input-and-output-question-3/amp/" title="Permalink to C | Input and Output | Question 3" rel="bookmark" class="c-wrap">C | Input and Output | Question 3</a></div>
+          <div class="head"><span>4. </span><a href="https://www.geeksforgeeks.org/c-input-and-output-question-4/amp/" title="Permalink to C | Input and Output | Question 4" rel="bookmark" class="c-wrap">C | Input and Output | Question 4</a></div>
+          <div class="head"><span>5. </span><a href="https://www.geeksforgeeks.org/c-input-and-output-question-5/amp/" title="Permalink to C | Input and Output | Question 5" rel="bookmark" class="c-wrap">C | Input and Output | Question 5</a></div>
+          <div class="head"><span>6. </span><a href="https://www.geeksforgeeks.org/c-input-and-output-question-6/amp/" title="Permalink to C | Input and Output | Question 6" rel="bookmark" class="c-wrap">C | Input and Output | Question 6</a></div>
+          <div class="head"><span>7. </span><a href="https://www.geeksforgeeks.org/c-input-and-output-question-9/amp/" title="Permalink to C | Input and Output | Question 9" rel="bookmark" class="c-wrap">C | Input and Output | Question 9</a></div>
+          <div class="head"><span>8. </span><a href="https://www.geeksforgeeks.org/c-input-and-output-question-10/amp/" title="Permalink to C | Input and Output | Question 13" rel="bookmark" class="c-wrap">C | Input and Output | Question 13</a></div>
+          <div class="head"><span>9. </span><a href="https://www.geeksforgeeks.org/c-input-and-output-question-11/amp/" title="Permalink to C | Input and Output | Question 11" rel="bookmark" class="c-wrap">C | Input and Output | Question 11</a></div>
+          <div class="head"><span>10. </span><a href="https://www.geeksforgeeks.org/c-input-and-output-question-12/amp/" title="Permalink to C | Input and Output | Question 12" rel="bookmark" class="c-wrap">C | Input and Output | Question 12</a></div>
+          <div class="head"><span>11. </span><a href="https://www.geeksforgeeks.org/c-input-and-output-question-13/amp/" title="Permalink to C | Input and Output | Question 13" rel="bookmark" class="c-wrap">C | Input and Output | Question 13</a></div>
+          <div class="head"><span>12. </span><a href="https://www.geeksforgeeks.org/formatted-and-unformatted-input-output-functions-in-c-with-examples/amp/" title="Permalink to Formatted and Unformatted Input/Output functions in C with Examples" rel="bookmark" class="c-wrap">Formatted and Unformatted Input/Output functions in C with Examples</a></div>
+          <div class="head"><span>13. </span><a href="https://www.geeksforgeeks.org/input-output-system-calls-c-create-open-close-read-write/amp/" title="Permalink to Input-output system calls in C | Create, Open, Close, Read, Write" rel="bookmark" class="c-wrap">Input-output system calls in C | Create, Open, Close, Read, Write</a></div>
+          <div class="head"><span>14. </span><a href="https://www.geeksforgeeks.org/code-valid-in-both-c-and-c-but-produce-different-output/amp/" title="Permalink to Code valid in both C and C++ but produce different output" rel="bookmark" class="c-wrap">Code valid in both C and C++ but produce different output</a></div>
+          <div class="head"><span>15. </span><a href="https://www.geeksforgeeks.org/c-prgram-print-range-basic-data-types-without-library-function-constant/amp/" title="Permalink to How to print range of basic data types without any library function and constant in C?" rel="bookmark" class="c-wrap">How to print range of basic data types without any library function and constant in C?</a></div>
+          <div class="head"><span>16. </span><a href="https://www.geeksforgeeks.org/dereference-reference-dereference-reference/amp/" title="Permalink to Output of the program | Dereference, Reference, Dereference, Reference...." rel="bookmark" class="c-wrap">Output of the program | Dereference, Reference, Dereference, Reference....</a></div>
+          <div class="head"><span>17. </span><a href="https://www.geeksforgeeks.org/output-c-programs-set-63/amp/" title="Permalink to Output of C programs | Set 63" rel="bookmark" class="c-wrap">Output of C programs | Set 63</a></div>
+          <div class="head"><span>18. </span><a href="https://www.geeksforgeeks.org/how-to-get-the-current-position-of-cursor-from-output-screen-in-c/amp/" title="Permalink to How to get the current position of cursor from output screen in C?" rel="bookmark" class="c-wrap">How to get the current position of cursor from output screen in C?</a></div>
+          <div class="head"><span>19. </span><a href="https://www.geeksforgeeks.org/output-of-c-programs-set-66-accessing-memory-locations/amp/" title="Permalink to Output of C programs | Set 66 (Accessing Memory Locations)" rel="bookmark" class="c-wrap">Output of C programs | Set 66 (Accessing Memory Locations)</a></div>
+          <div class="head"><span>20. </span><a href="https://www.geeksforgeeks.org/how-to-change-the-output-of-printf-in-main-in-c/amp/" title="Permalink to How to Change the Output of printf() in main() in C?" rel="bookmark" class="c-wrap">How to Change the Output of printf() in main() in C?</a></div>
+          <div class="head"><span>21. </span><a href="https://www.geeksforgeeks.org/output-c-programs-set-30-switch-case/amp/" title="Permalink to Output of C programs | Set 30 (Switch Case)" rel="bookmark" class="c-wrap">Output of C programs | Set 30 (Switch Case)</a></div>
+          <div class="head"><span>22. </span><a href="https://www.geeksforgeeks.org/basic-code-optimizations-in-c/amp/" title="Permalink to Basic Code Optimizations in C" rel="bookmark" class="c-wrap">Basic Code Optimizations in C</a></div>
+          <div class="head"><span>23. </span><a href="https://www.geeksforgeeks.org/c-basic-syntax/amp/" title="Permalink to C Basic Syntax" rel="bookmark" class="c-wrap">C Basic Syntax</a></div>
+          <div class="head"><span>24. </span><a href="https://www.geeksforgeeks.org/how-to-input-or-read-a-character-word-and-a-sentence-from-user-in-c/amp/" title="Permalink to How to input or read a Character, Word and a Sentence from user in C?" rel="bookmark" class="c-wrap">How to input or read a Character, Word and a Sentence from user in C?</a></div>
+          <div class="head"><span>25. </span><a href="https://www.geeksforgeeks.org/input-an-integer-array-without-spaces-in-c/amp/" title="Permalink to Input an integer array without spaces in C" rel="bookmark" class="c-wrap">Input an integer array without spaces in C</a></div>      </div>
+    </div>
+  
+	<footer class="amp-wp-article-footer">
+        <amp-ad width=336 height=280
+            type="doubleclick"
+            data-slot="/27823234/GFG_AMP_FOOTER"
+            data-multi-size="300x250,250x250,200x200">
+          <div placeholder></div>
+          <div fallback></div>
+        </amp-ad>
+        		<div class="amp-wp-meta amp-wp-comments-link">
+		<a href="../index.html">
+			Read Full Article		</a>
+	</div>
+	</footer>
+</article>
+<!-- <amp-analytics type="googleanalytics">
+<script type="application/json">
+{
+  "vars": {
+    "account": "UA-12148232-1"
+  },
+  "triggers": {
+    "trackPageview": {
+      "on": "visible",
+      "request": "pageview"
+    }
+  }
+}
+</script>
+</amp-analytics> -->
+<amp-analytics type="gtag" data-credentials="include">
+  <script type="application/json">
+    {
+      "vars": {
+        "gtag_id": "G-E752F18V9F",
+        "config": {
+          "G-E752F18V9F": {
+            "groups": "default"
+          }
+        }
+      },
+      "triggers": {
+        "trackPageview": {
+          "on": "visible",
+          "request": "pageview"
+        }
+      }
+    }
+  </script>
+</amp-analytics>
+
+  <!-- Footer start -->
+  <footer class="gfg-footer" id="gfg-footer">
+      <div class="footer-wrapper">
+          <div class="footer-wrapper_branding">
+              <a class="footer-wrapper_branding-anchor" aria-label="GeeksforGeeks Logo" href="https://www.geeksforgeeks.org/">
+                <amp-img style="display:block; height: 33.8px; width: 230px;" height="33.8px" width="230px" class="footer-wrapper_branding-nlogo" src="https://media.geeksforgeeks.org/auth-dashboard-uploads/gfgFooterLogo.png" alt="geeksforgeeks-footer-logo"></amp-img>
+                </a>
+              <div class="footer-wrapper_branding-address">
+                  <i class="gfg-icon gfg-icon_pin"></i>
+                  <span style="margin-right: 15px;">
+                     A-143, 9th Floor, Sovereign Corporate Tower, Sector-136, Noida, Uttar Pradesh - 201305                      </span>
+              </div>
+              <div class="footer-wrapper_branding-social">
+                  <a href="https://www.facebook.com/geeksforgeeks.org/" rel="noopener noreferrer" aria-label="GeeksforGeeks Facebook" target="_blank">
+                      <div class="facebook"></div>
+                  </a>
+                  <a href="https://www.instagram.com/geeks_for_geeks/" rel="noopener noreferrer" aria-label="GeeksforGeeks Instagram" target="_blank">
+                      <div class="instagram"></div>
+                  </a>
+                  <a href="https://in.linkedin.com/company/geeksforgeeks" rel="noopener noreferrer" aria-label="GeeksforGeeks LinkedIn" target="_blank">
+                      <div class="linkedin"></div>
+                  </a>
+                  <a href="https://twitter.com/geeksforgeeks" rel="noopener noreferrer" aria-label="GeeksforGeeks Twitter" target="_blank">
+                      <div class="twitter"></div>
+                  </a>
+                  <a href="https://www.youtube.com/geeksforgeeksvideos" rel="noopener noreferrer" aria-label="GeeksforGeeks YouTube" target="_blank">
+                      <div class="youtube"></div>
+                  </a>
+                </div>
+              <div class="footer-wrapper_branding-app">
+                  <a aria-label="GeeksforGeeks App Link" href="https://geeksforgeeksapp.page.link/gfg-app" target="_blank"><amp-img style="display:block; position:relative;" height="33.8px" width="110px" src="https://media.geeksforgeeks.org/auth-dashboard-uploads/googleplay.png"  alt="GFG App on Play Store" id="gplay"></amp-img></a>
+                  <a aria-label="GeeksforGeeks App Link" href="https://geeksforgeeksapp.page.link/gfg-app" target="_blank"><amp-img style="display:block; position:relative;" height="33.8px" width="110px" src="https://media.geeksforgeeks.org/auth-dashboard-uploads/appstore.png" alt="GFG App on App Store" id="appstore"></amp-img></a>
+              </div>
+          </div> 
+        <div class="all-footer-information">
+          <div class="footer-wrapper_links" style="justify-content: space-between; text-align: -webkit-left;"><ul class="footer-wrapper_links-list" ><li>Company</li><li><a href=https://www.geeksforgeeks.org/about/?ref=footer>About Us</a></li><li><a href=https://www.geeksforgeeks.org/legal/?ref=footer>Legal</a></li><li><a href=https://geeksforgeeks.zohorecruit.in/careers?ref=footer>Careers</a></li><li><a href=https://www.geeksforgeeks.org/press-release/?ref=footer>In Media</a></li><li><a href=https://www.geeksforgeeks.org/about/contact-us/?ref=footer>Contact Us</a></li><li><a href=https://www.geeksforgeeks.org/advertise-with-us/?ref=footer>Advertise with us</a></li><li><a href=https://www.geeksforgeeks.org/gfg-corporate-solution/?ref=footer>GFG Corporate Solution</a></li><li><a href=https://www.geeksforgeeks.org/campus-training-program/?ref=footer>Placement Training Program</a></li></ul><ul class="footer-wrapper_links-list" ><li>Explore</li><li><a href=https://practice.geeksforgeeks.org/events/rec/job-a-thon/?ref=footer>Job-A-Thon Hiring Challenge</a></li><li><a href=https://www.geeksforgeeks.org/events/rec/gfg-hackathon/?ref=footer>Hack-A-Thon</a></li><li><a href=https://practice.geeksforgeeks.org/events/rec/gfg-weekly-coding-contest?utm_source=geeksforgeeks&amp;utm_medium=footer&amp;utm_campaign=gfgweekly/?ref=footer>GfG Weekly Contest</a></li><li><a href=https://www.geeksforgeeks.org/courses/category/all?courseType=offline&amp;courseFeeType=all/?ref=footer>Offline Classes (Delhi/NCR)</a></li><li><a href=https://www.geeksforgeeks.org/courses/dsa-self-paced?utm_source=geeksforgeeks&amp;utm_medium=footer&amp;utm_campaign=course/?ref=footer>DSA in JAVA/C++</a></li><li><a href=https://www.geeksforgeeks.org/courses/mastering-system-design-low-level-to-high-level-solutions?utm_source=geeksforgeeks&amp;utm_medium=footer&amp;utm_campaign=course/?ref=footer>Master System Design</a></li><li><a href=https://www.geeksforgeeks.org/courses/competitive-programming-cp?utm_source=geeksforgeeks&amp;utm_medium=footer&amp;utm_campaign=course>Master CP</a></li><li><a href=https://www.geeksforgeeks.org/videos/?ref=footer>GeeksforGeeks Videos</a></li><li><a href=https://www.geeksforgeeks.org/community/?ref=footer>Geeks Community</a></li></ul><ul class="footer-wrapper_links-list" ><li style="padding-bottom: 10px;"><a class="link-head" href=https://www.geeksforgeeks.org/introduction-to-programming-languages/?ref=footer>Languages</a></li><li><a href=https://www.geeksforgeeks.org/python-programming-language/?ref=footer>Python</a></li><li><a href=https://www.geeksforgeeks.org/java/?ref=footer>Java</a></li><li><a href=https://www.geeksforgeeks.org/c-plus-plus/?ref=footer>C++</a></li><li><a href=https://www.geeksforgeeks.org/php-tutorials/?ref=footer>PHP</a></li><li><a href=https://www.geeksforgeeks.org/golang/?ref=footer>GoLang</a></li><li><a href=https://www.geeksforgeeks.org/sql-tutorial/?ref=footer>SQL</a></li><li><a href=https://www.geeksforgeeks.org/r-tutorial/?ref=footer>R Language</a></li><li><a href=https://www.geeksforgeeks.org/android-tutorial/?ref=footer>Android Tutorial</a></li></ul><ul class="footer-wrapper_links-list" ><li style="padding-bottom: 10px;"><a class="link-head" href=https://www.geeksforgeeks.org/learn-data-structures-and-algorithms-dsa-tutorial/?ref=footer>DSA</a></li><li><a href=https://www.geeksforgeeks.org/data-structures/?ref=footer>Data Structures</a></li><li><a href=https://www.geeksforgeeks.org/fundamentals-of-algorithms/?ref=footer>Algorithms</a></li><li><a href=https://www.geeksforgeeks.org/complete-guide-to-dsa-for-beginners/?ref=footer>DSA for Beginners</a></li><li><a href=https://www.geeksforgeeks.org/basic-coding-problems-in-dsa-for-beginners/?ref=footer>Basic DSA Problems</a></li><li><a href=https://www.geeksforgeeks.org/complete-roadmap-to-learn-dsa-from-scratch/?ref=footer>DSA Roadmap</a></li><li><a href=https://www.geeksforgeeks.org/top-100-data-structure-and-algorithms-dsa-interview-questions-topic-wise/?ref=footer>DSA Interview Questions</a></li><li><a href=https://www.geeksforgeeks.org/competitive-programming-a-complete-guide/?ref=footer>Competitive Programming</a></li></ul><ul class="footer-wrapper_links-list" ><li>Data Science & ML</li><li><a href=https://www.geeksforgeeks.org/data-science-tutorial/?ref=footer>Data Science With Python</a></li><li><a href=https://www.geeksforgeeks.org/data-science-for-beginners/?ref=footer>Data Science For Beginner</a></li><li><a href=https://www.geeksforgeeks.org/machine-learning/?ref=footer>Machine Learning Tutorial</a></li><li><a href=https://www.geeksforgeeks.org/machine-learning-mathematics/?ref=footer>ML Maths</a></li><li><a href=https://www.geeksforgeeks.org/python-data-visualization-tutorial/?ref=footer>Data Visualisation Tutorial</a></li><li><a href=https://www.geeksforgeeks.org/pandas-tutorial/?ref=footer>Pandas Tutorial</a></li><li><a href=https://www.geeksforgeeks.org/numpy-tutorial/?ref=footer>NumPy Tutorial</a></li><li><a href=https://www.geeksforgeeks.org/natural-language-processing-nlp-tutorial/?ref=footer>NLP Tutorial</a></li><li><a href=https://www.geeksforgeeks.org/deep-learning-tutorial/?ref=footer>Deep Learning Tutorial</a></li></ul><ul class="footer-wrapper_links-list" ><li style="padding-bottom: 10px;"><a class="link-head" href=https://www.geeksforgeeks.org/web-technology/?ref=footer>Web Technologies</a></li><li><a href=https://www.geeksforgeeks.org/html/?ref=footer>HTML</a></li><li><a href=https://www.geeksforgeeks.org/css/?ref=footer>CSS</a></li><li><a href=https://www.geeksforgeeks.org/javascript/?ref=footer>JavaScript</a></li><li><a href=https://www.geeksforgeeks.org/typescript/?ref=footer>TypeScript</a></li><li><a href=https://www.geeksforgeeks.org/learn-reactjs/?ref=footer>ReactJS</a></li><li><a href=https://www.geeksforgeeks.org/nextjs/?ref=footer>NextJS</a></li><li><a href=https://www.geeksforgeeks.org/nodejs/?ref=footer>NodeJs</a></li><li><a href=https://www.geeksforgeeks.org/bootstrap/?ref=footer>Bootstrap</a></li><li><a href=https://www.geeksforgeeks.org/tailwind-css/?ref=footer>Tailwind CSS</a></li></ul></div><div class="footer-wrapper_links" style="justify-content: space-between; text-align: -webkit-left;"><ul class="footer-wrapper_links-list" style="margin-block-start: 0em; width:16%;"><li style="padding-bottom: 10px;"><a class="link-head" href=https://www.geeksforgeeks.org/python-programming-language/?ref=footer>Python Tutorial</a></li><li><a href=https://www.geeksforgeeks.org/python-programming-examples/?ref=footer>Python Programming Examples</a></li><li><a href=https://www.geeksforgeeks.org/django-tutorial/?ref=footer>Django Tutorial</a></li><li><a href=https://www.geeksforgeeks.org/python-projects-beginner-to-advanced/?ref=footer>Python Projects</a></li><li><a href=https://www.geeksforgeeks.org/python-tkinter-tutorial/?ref=footer>Python Tkinter</a></li><li><a href=https://www.geeksforgeeks.org/python-web-scraping-tutorial/?ref=footer>Web Scraping</a></li><li><a href=https://www.geeksforgeeks.org/opencv-python-tutorial/?ref=footer>OpenCV Tutorial</a></li><li><a href=https://www.geeksforgeeks.org/python-interview-questions/?ref=footer>Python Interview Question</a></li></ul><ul class="footer-wrapper_links-list" ><li style="padding-bottom: 10px;"><a class="link-head" href=https://www.geeksforgeeks.org/gate-cs-notes-gq/?ref=footer>Computer Science</a></li><li><a href=https://www.geeksforgeeks.org/gate-cs-notes-gq/?ref=footer>GATE CS Notes</a></li><li><a href=https://www.geeksforgeeks.org/operating-systems/?ref=footer>Operating Systems</a></li><li><a href=https://www.geeksforgeeks.org/computer-network-tutorials/?ref=footer>Computer Network</a></li><li><a href=https://www.geeksforgeeks.org/dbms/?ref=footer>Database Management System</a></li><li><a href=https://www.geeksforgeeks.org/software-engineering/?ref=footer>Software Engineering</a></li><li><a href=https://www.geeksforgeeks.org/digital-electronics-logic-design-tutorials/?ref=footer>Digital Logic Design</a></li><li><a href=https://www.geeksforgeeks.org/engineering-mathematics-tutorials/?ref=footer>Engineering Maths</a></li></ul><ul class="footer-wrapper_links-list" ><li style="padding-bottom: 10px;"><a class="link-head" href=https://www.geeksforgeeks.org/devops-tutorial/?ref=footer>DevOps</a></li><li><a href=https://www.geeksforgeeks.org/git-tutorial/?ref=footer>Git</a></li><li><a href=https://www.geeksforgeeks.org/aws-tutorial/?ref=footer>AWS</a></li><li><a href=https://www.geeksforgeeks.org/docker-tutorial/?ref=footer>Docker</a></li><li><a href=https://www.geeksforgeeks.org/kubernetes-tutorial/?ref=footer>Kubernetes</a></li><li><a href=https://www.geeksforgeeks.org/microsoft-azure/?ref=footer>Azure</a></li><li><a href=https://www.geeksforgeeks.org/google-cloud-platform-tutorial/?ref=footer>GCP</a></li><li><a href=https://www.geeksforgeeks.org/devops-roadmap/?ref=footer>DevOps Roadmap</a></li></ul><ul class="footer-wrapper_links-list" ><li style="padding-bottom: 10px;"><a class="link-head" href=https://www.geeksforgeeks.org/system-design-tutorial/?ref=footer>System Design</a></li><li><a href=https://www.geeksforgeeks.org/what-is-high-level-design-learn-system-design/?ref=footer>High Level Design</a></li><li><a href=https://www.geeksforgeeks.org/what-is-low-level-design-or-lld-learn-system-design/?ref=footer>Low Level Design</a></li><li><a href=https://www.geeksforgeeks.org/unified-modeling-language-uml-introduction/?ref=footer>UML Diagrams</a></li><li><a href=https://www.geeksforgeeks.org/system-design-interview-guide/?ref=footer>Interview Guide</a></li><li><a href=https://www.geeksforgeeks.org/software-design-patterns/?ref=footer>Design Patterns</a></li><li><a href=https://www.geeksforgeeks.org/object-oriented-analysis-and-design/?ref=footer>OOAD</a></li><li><a href=https://www.geeksforgeeks.org/system-design-interview-bootcamp-guide/?ref=footer>System Design Bootcamp</a></li><li><a href=https://www.geeksforgeeks.org/most-commonly-asked-system-design-interview-problems-questions/?ref=footer>Interview Questions</a></li></ul><ul class="footer-wrapper_links-list" ><li>School Subjects</li><li><a href=https://www.geeksforgeeks.org/maths/?ref=footer>Mathematics</a></li><li><a href=https://www.geeksforgeeks.org/physics/?ref=footer>Physics</a></li><li><a href=https://www.geeksforgeeks.org/chemistry/?ref=footer>Chemistry</a></li><li><a href=https://www.geeksforgeeks.org/biology/?ref=footer>Biology</a></li><li><a href=https://www.geeksforgeeks.org/social-science/?ref=footer>Social Science</a></li><li><a href=https://www.geeksforgeeks.org/english-grammar/?ref=footer>English Grammar</a></li></ul><ul class="footer-wrapper_links-list" ><li style="padding-bottom: 10px;"><a class="link-head" href=https://www.geeksforgeeks.org/commerce/?ref=footer>Commerce</a></li><li><a href=https://www.geeksforgeeks.org/accountancy/?ref=footer>Accountancy</a></li><li><a href=https://www.geeksforgeeks.org/business-studies/?ref=footer>Business Studies</a></li><li><a href=https://www.geeksforgeeks.org/economics/?ref=footer>Economics</a></li><li><a href=https://www.geeksforgeeks.org/management/?ref=footer>Management</a></li><li><a href=https://www.geeksforgeeks.org/human-resource-management-hrm/?ref=footer>HR Management</a></li><li><a href=https://www.geeksforgeeks.org/finance/?ref=footer>Finance</a></li><li><a href=https://www.geeksforgeeks.org/income-tax/?ref=footer>Income Tax</a></li></ul></div><div class="footer-wrapper_links" style="justify-content: space-between; text-align: -webkit-left;"><ul class="footer-wrapper_links-list" style="margin-block-start: 0em; width:16%;"><li>UPSC Study Material</li><li><a href=https://www.geeksforgeeks.org/important-topics-in-polity-for-upsc/?ref=footer>Polity Notes</a></li><li><a href=https://www.geeksforgeeks.org/important-topics-of-geography-for-upsc/?ref=footer>Geography Notes</a></li><li><a href=https://www.geeksforgeeks.org/history-notes-for-upsc-exam/?ref=footer>History Notes</a></li><li><a href=https://www.geeksforgeeks.org/important-topics-of-science-and-technology-for-upsc/?ref=footer>Science and Technology Notes</a></li><li><a href=https://www.geeksforgeeks.org/indian-economy-notes-upsc/?ref=footer>Economy Notes</a></li><li><a href=https://www.geeksforgeeks.org/important-topics-in-ethics-for-upsc/?ref=footer>Ethics Notes</a></li><li><a href=https://www.geeksforgeeks.org/upsc-previous-year-question-paper-solutions/?ref=footer>Previous Year Papers</a></li></ul><ul class="footer-wrapper_links-list" ><li style="padding-bottom: 10px;"><a class="link-head" href=https://www.geeksforgeeks.org/technical-interview-preparation/?ref=footer>Preparation Corner</a></li><li><a href=https://www.geeksforgeeks.org/company-wise-recruitment-process/?ref=footer>Company-Wise Recruitment Process</a></li><li><a href=https://www.geeksforgeeks.org/free-resume-templates/?ref=footer>Resume Templates</a></li><li><a href=https://www.geeksforgeeks.org/aptitude-questions-and-answers/?ref=footer>Aptitude Preparation</a></li><li><a href=https://www.geeksforgeeks.org/puzzles/?ref=footer>Puzzles</a></li><li><a href=https://www.geeksforgeeks.org/company-preparation/?ref=footer>Company-Wise Preparation</a></li><li><a href=https://www.geeksforgeeks.org/companies/?ref=footer>Companies</a></li><li><a href=https://www.geeksforgeeks.org/colleges/?ref=footer>Colleges</a></li></ul><ul class="footer-wrapper_links-list" ><li>Competitive Exams</li><li><a href=https://www.geeksforgeeks.org/jee-advanced/?ref=footer>JEE Advanced</a></li><li><a href=https://www.geeksforgeeks.org/ugc-net-exam/?ref=footer>UGC NET</a></li><li><a href=https://www.geeksforgeeks.org/ssc-cgl-syllabus/?ref=footer>SSC CGL</a></li><li><a href=https://www.geeksforgeeks.org/sbi-po-syllabus-2024/?ref=footer>SBI PO</a></li><li><a href=https://www.geeksforgeeks.org/sbi-clerk-syllabus/?ref=footer>SBI Clerk</a></li><li><a href=https://www.geeksforgeeks.org/ibps-po-syllabus/?ref=footer>IBPS PO</a></li><li><a href=https://www.geeksforgeeks.org/detailed-syllabus-of-ibps-clerk/?ref=footer>IBPS Clerk</a></li></ul><ul class="footer-wrapper_links-list" ><li style="padding-bottom: 10px;"><a class="link-head" href=https://www.geeksforgeeks.org/geeksforgeeks-online-tutorials-free/?ref=footer>More Tutorials</a></li><li><a href=https://www.geeksforgeeks.org/software-development/?ref=footer>Software Development</a></li><li><a href=https://www.geeksforgeeks.org/software-testing-tutorial/?ref=footer>Software Testing</a></li><li><a href=https://www.geeksforgeeks.org/product-management/?ref=footer>Product Management</a></li><li><a href=https://www.geeksforgeeks.org/project-management-tutorial/?ref=footer>Project Management</a></li><li><a href=https://www.geeksforgeeks.org/linux-tutorial/?ref=footer>Linux</a></li><li><a href=https://www.geeksforgeeks.org/excel-tutorial/?ref=footer>Excel</a></li><li><a href=https://www.geeksforgeeks.org/geeksforgeeks-master-sheet-list-of-all-cheat-sheets/?ref=footer>All Cheat Sheets</a></li></ul><ul class="footer-wrapper_links-list" ><li>Free Online Tools</li><li><a href=https://www.geeksforgeeks.org/free-typing-test/?ref=footer>Typing Test</a></li><li><a href=https://www.geeksforgeeks.org/online-image-editor/?ref=footer>Image Editor</a></li><li><a href=https://www.geeksforgeeks.org/online-code-formatter/?ref=footer>Code Formatters</a></li><li><a href=https://www.geeksforgeeks.org/online-file-converters/?ref=footer>Code Converters</a></li><li><a href=https://www.geeksforgeeks.org/currency-converter/?ref=footer>Currency Converter</a></li><li><a href=https://www.geeksforgeeks.org/random-number-generator/?ref=footer>Random Number Generator</a></li><li><a href=https://www.geeksforgeeks.org/random-password-generator/?ref=footer>Random Password Generator</a></li></ul><ul class="footer-wrapper_links-list" ><li>Write & Earn</li><li><a href=https://write.geeksforgeeks.org/?ref=footer>Write an Article</a></li><li><a href=https://www.geeksforgeeks.org/how-to-improve-an-article/?ref=footer>Improve an Article</a></li><li><a href=https://write.geeksforgeeks.org/pick-article/?ref=footer>Pick Topics to Write</a></li><li><a href=https://www.geeksforgeeks.org/share-your-experiences-on-geeksforgeeks/?ref=footer>Share your Experiences</a></li><li><a href=https://write.geeksforgeeks.org/internship/?ref=footer>Internships</a></li></ul></div>        </div> 
+      </div>
+              <div class="footer-strip" >
+          <div class="copyright">
+              <a href="https://www.geeksforgeeks.org/" rel="noopener noreferrer" target="_blank">@GeeksforGeeks, Sanchhaya Education Private Limited</a><span>, <a href="https://www.geeksforgeeks.org/copyright-information/">All rights reserved</a></span>
+          </div>
+          <div class="social-links">
+          </div>
+      </div>
+  </footer>
+
+
+
+
+</body>
+
+<!-- Mirrored from www.geeksforgeeks.org/basic-input-and-output-in-c/amp/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 May 2024 09:15:08 GMT -->
+</html>
+
+<!-- Dynamic page generated in 0.282 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2024-04-29 19:58:48 -->
+
+<!-- Compression = gzip -->
+<!-- super cache -->

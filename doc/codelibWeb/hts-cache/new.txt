@@ -1,0 +1,3 @@
+date	size'/'remotesize	flags(request:Update,Range state:File response:Modified,Chunked,gZipped)	statuscode	status ('servermsg')	MIME	Etag|Date	URL	localfile	(from URL)
+12:10:16	143/143	---M-Z	-1	error ('Open%20error%20when%20decompressing%20(can%20not%20create%20temporary%20file%20/tmp0.z)')	text/plain	date:Mon,%2022%20Apr%202024%2006:26:17%20GMT	https://www.petecodes.co.uk/robots.txt		(from )
+12:10:17	410037/410037	---MCZ	200	added ('OK')	text/html	date:Mon,%2025%20Mar%202024%2008:38:14%20GMT	https://www.petecodes.co.uk/graphics-in-assembler-for-the-sam-coupe/	www.petecodes.co.uk/graphics-in-assembler-for-the-sam-coupe/index.html	(from )
