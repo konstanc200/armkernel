@@ -2,6 +2,17 @@
 #include <stdlib.h>
 #include <string.h>
 
+/* 
+This script closes ONLY one program. 
+It does not requere super user privalige to run. 
+It requeres only the name of the program for it to close it 
+*/
+
+// Improvments to be made 
+// Make it close multiple programs
+// And print and error messige when the program name passed does not exist 
+
+
 int close(char *proc) 
 	{
 
@@ -16,13 +27,18 @@ int close(char *proc)
 
 	system(command);
 
-	printf("***Processed closed successfully***\n");
-
 	return 0;
 }
 
 int main(int argc, char *argv[]) 
 	{
+
+	if(argv[1] == NULL)
+	{
+		printf("** No Process to Close\n");
+		return 1;
+
+	}
 
         FILE *proc;       
   	char *buffer;     
@@ -34,8 +50,8 @@ int main(int argc, char *argv[])
         sprintf(command,"pidof %s",buffer);
   
   	proc = popen(command, "r");
-  	fgets(proc_n, sizeof(proc_n), proc);                              
-        
+  	fgets(proc_n, sizeof(proc_n), proc);   
+
 	close(proc_n);
     
   	free(buffer);                                         

@@ -6,6 +6,9 @@ main:
 run: 
 	qemu-system-arm -M versatilepb -m 128M -nographic -kernel build/boot.elf
 
+close:
+	./etc/kill_process qemu-system-arm
+
 clear: 
 	find build -mindepth 1 -delete
 
